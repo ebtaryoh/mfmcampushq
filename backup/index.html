@@ -1,0 +1,1643 @@
+﻿
+Campus Fellowship Showcase Platform
+Think like a pro developer and uiux designer with many years of experience to help me with this idea: I want to develop a web app for a church campus fellowship nationwide MFMCAMPUSHQ. Each campus fellowship will have a page for themselves on  it that will showcase their images, about the fellowship, contact info, Announcements, weekly schedule, social media contact, address, fellowship service schedule and venue, event, campus map, etc the campus fellowship has the national cordinator, assitant national cordinator, state cordinator, regional cordinator and volunteer cordinator. let the national site have upcoming events. let there be a section for people New to MFMCF to fill form to Join  thier campus 
+
+fellowship this week  and will be connect  to the campus coordinator on WhatsApp in under 12 hours. let it have a live National Prayer Altar where people from diff campus fellowship can type there prayer request and it can be seen live on the site. let there be horizontal scrolling that carries some announcement and bible scriptures. a section to Apply to Pioneer a campus fellowship if they dont have on their campus. add any more feature that will make this app what it should be. give it that premium effect, add animation to text image and other places necessary, add a premium logo loading state while entering the app and other places neccessary this is the main church website: https://www.mountainoffire.org/. dont for get to let every button or link work and also  give the app a very premium and pro animation
+Voilà — 2 design options are ready. Take a moment to compare and cast your vote.
+
+1st
+Option C
+
+2nd
+Option A
+
+3rd
+Option D
+
+4th
+Option B
+Option C
+1st
+
+
+
+Great results! Start a new chat or use Pro / Max to keep iterating.
+
+New Chat
+Option C
+
+Preview
+Code
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MFMCAMPUSHQ — Mountain of Fire & Miracles Campus Fellowship</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Fragment+Mono:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          'display': ['"Fraunces"', 'serif'],
+          'sans': ['"Instrument Sans"', 'sans-serif'],
+          'mono': ['"Fragment Mono"', 'monospace'],
+        },
+        colors: {
+          mfm: {
+            purple: '#4a1a6b',
+            'purple-dark': '#2d1042',
+            'purple-mid': '#6a2d93',
+            'purple-light': '#f4ecf9',
+            gold: '#d7a84a',
+            'gold-light': '#f3d38a',
+            'gold-pale': '#fbf4e6',
+            cream: '#f9f5ef',
+            ink: '#18131d',
+            stone: '#6f6675',
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'Instrument Sans', sans-serif; background: #f9f5ef; color: #18131d; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Fraunces', serif; }
+  .font-mono { font-family: 'Fragment Mono', monospace; }
+
+  /* Premium grain */
+  .grain:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMDAnIGhlaWdodD0nMzAwJz48ZmlsdGVyIGlkPSdubyc+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bVRjdGF2ZXM9JzQnIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9InVybCgjbm8pIi8+PC9zdmc+');
+    mix-blend-mode: multiply;
+  }
+
+  /* Announcement ticker */
+  .ticker-wrap { overflow: hidden; background: #d7a84a; color: #2d1042; }
+  .ticker-track { display: flex; width: max-content; animation: ticker-scroll 90s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* Reveal animations */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .72s cubic-bezier(.22,1,.36,1), transform .72s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: .07s; }
+  .reveal-delay-2 { transition-delay: .14s; }
+  .reveal-delay-3 { transition-delay: .21s; }
+
+  /* Premium cards */
+  .soft-card { background: #fff; border: 1px solid #e8e0d7; border-radius: 22px; box-shadow: 0 4px 24px rgba(45,16,66,.05); }
+  .soft-card:hover { box-shadow: 0 12px 48px rgba(45,16,66,.09); transform: translateY(-2px); transition: all .35s ease; }
+
+  /* Prayer feed */
+  .prayer-feed { max-height: 540px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #d7c5e8 transparent; }
+  .prayer-feed::-webkit-scrollbar { width: 5px; }
+  .prayer-feed::-webkit-scrollbar-thumb { background: #d7c5e8; border-radius: 3px; }
+
+  /* Campus hero */
+  .campus-hero-grid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.18) 1px, transparent 0); background-size: 26px 26px; }
+
+  /* Loader */
+  #app-loader { transition: opacity .7s ease, visibility .7s ease; }
+  #app-loader.hidden-loader { opacity: 0; visibility: hidden; pointer-events: none; }
+  .loader-flame {
+    width: 64px; height: 64px; border-radius: 20px;
+    background: radial-gradient(120% 120% at 30% 30%, #f3d38a 0%, #d7a84a 45%, #b77a2a 100%);
+    box-shadow: 0 8px 40px rgba(215,168,74,.45);
+    position: relative;
+    animation: loader-bob 1.7s ease-in-out infinite;
+  }
+  .loader-flame::after {
+    content: ''; position: absolute; inset: 16px; border-radius: 12px;
+    background: radial-gradient(circle, #fff8e8 0%, rgba(255,255,255,0) 70%);
+    opacity: .8;
+  }
+  @keyframes loader-bob { 0%,100%{ transform:translateY(0) scale(1);} 50%{ transform:translateY(-7px) scale(1.035);} }
+  .loader-bar { height:2px; background: rgba(255,255,255,.22); border-radius: 99px; overflow:hidden; width:160px;}
+  .loader-bar span { display:block; height:100%; background: #f3d38a; width:35%; border-radius:99px; animation: loader-sweep 1.35s ease-in-out infinite; }
+  @keyframes loader-sweep { 0%{ margin-left:-35%;} 100%{ margin-left:100%;}}
+
+  /* Custom inputs */
+  .fi { width:100%; background:#f8f3ea; border:1px solid #e4d9c8; border-radius:14px; padding:13px 15px; font-size:14.5px; outline:none; transition:.18s; color:#18131d;}
+  .fi:focus { background:#fff; border-color:#d7a84a; box-shadow:0 0 0 4px rgba(215,168,74,.13); }
+  .fi::placeholder { color:#9d9098; }
+
+  /* Pill */
+  .gold-pill { background:#fbf4e6; color:#8a5c1a; border:1px solid #e8d0a3; border-radius:999px; font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:6px 12px; font-family:'Fragment Mono', monospace; }
+
+  /* Scrollbar hide */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Toast */
+  #toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+  .toast { background: #22162d; color: #f9f2e3; padding: 13px 18px; border-radius: 14px; font-size: 13.5px; font-weight: 600; box-shadow: 0 14px 40px rgba(0,0,0,.22); display: flex; align-items: center; gap: 10px; transform: translateY(8px); opacity: 0; animation: toastIn .34s ease forwards; max-width: 360px; }
+  @keyframes toastIn { to { opacity:1; transform:translateY(0);} }
+  .toast.gold { background:#fbf4e6; color:#53300f; border:1px solid #ead0a3;}
+
+  /* Campus campus card image zoom */
+  .campus-card-img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
+  .campus-card:hover .campus-card-img { transform: scale(1.045); }
+
+  /* Map dots pulse */
+  .map-dot { animation: mapPulse 2.4s ease-in-out infinite; }
+  @keyframes mapPulse { 0%,100%{transform:scale(1); opacity:.92} 50%{transform:scale(1.35); opacity:1} }
+
+  /* Prayer bump */
+  @keyframes prayerIn { from { opacity:0; transform:translateY(12px) scale(.995);} to { opacity:1; transform:translateY(0) scale(1);} }
+  .prayer-item-new { animation: prayerIn .45s cubic-bezier(.22,1,.36,1); }
+
+  a, button { cursor: pointer; }
+
+  /* Premium Modal Animations */
+  .modal-backdrop {
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0;
+  }
+  .modal-content {
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  .modal-open .modal-backdrop {
+    opacity: 1;
+  }
+  .modal-open .modal-content {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  
+  /* Buttons and loading */
+  .btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+  }
+  .btn-loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  .btn-loading-dark::after {
+    border-color: rgba(0,0,0,0.1);
+    border-top-color: #2d1042;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+</style>
+</head>
+<body class="bg-mfm-cream text-mfm-ink antialiased">
+
+<!-- APP LOADER -->
+<div id="app-loader" class="fixed inset-0 z-[100] bg-[#2d1042] flex items-center justify-center">
+  <div class="grain absolute inset-0"></div>
+  <div class="relative z-10 flex flex-col items-center text-center px-6">
+    <div class="loader-flame flex items-center justify-center">
+      <i data-lucide="flame" class="w-7 h-7 text-[#4a1a6b]"></i>
+    </div>
+    <div class="mt-6 font-display text-[28px] text-[#fdf6ea] tracking-tight">MFMCAMPUSHQ</div>
+    <div class="text-[11px] font-mono tracking-widest text-[#d7b47a] mt-1">MOUNTAIN OF FIRE & MIRACLES</div>
+    <div class="loader-bar mt-7"><span></span></div>
+    <div class="mt-4 text-[11px] text-[#c7aacb] font-mono" id="loader-status">Mounting campus network…</div>
+  </div>
+</div>
+
+<!-- TOASTS -->
+<div id="toast-container"></div>
+
+<!-- ANNOUNCEMENT TICKER -->
+<div class="ticker-wrap relative z-50 border-b border-[#c99635] text-[12.5px] md:text-[13px] font-medium">
+  <div class="ticker-track py-[9px]">
+    <div class="flex items-center whitespace-nowrap pr-16" id="ticker-content">
+      <!-- JS fills, duplicated -->
+    </div>
+    <div class="flex items-center whitespace-nowrap pr-16" aria-hidden="true" id="ticker-content-clone">
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header" class="sticky top-0 z-40 bg-[#f9f5ef]/90 backdrop-blur-xl border-b border-[#e8ddd0]">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+    <div class="flex items-center justify-between h-[72px]">
+      <!-- Logo -->
+      <a href="#home" id="brand-link" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-[14px] bg-gradient-to-br from-[#f3d38a] to-[#d7a84a] flex items-center justify-center shadow-[0_4px_18px_rgba(215,168,74,.33)]">
+          <i data-lucide="flame" class="w-[20px] h-[20px] text-[#4a1a6b]"></i>
+        </div>
+        <div>
+          <div class="font-display font-[700] text-[18.5px] leading-tight tracking-tight text-mfm-purple">MFMCAMPUSHQ</div>
+          <div class="text-[10.5px] font-mono text-mfm-stone tracking-wider -mt-[1px]">NATIONAL CAMPUS FELLOWSHIP</div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8 text-[14.5px] font-[600] text-[#4b3a52]">
+        <a href="#campuses" class="nav-link hover:text-mfm-purple transition">Campuses</a>
+        <a href="#events" class="nav-link hover:text-mfm-purple transition">Events</a>
+        <a href="#prayer" class="nav-link hover:text-mfm-purple transition">Prayer Altar</a>
+        <a href="#resources" class="nav-link hover:text-mfm-purple transition">Resources</a>
+        <a href="https://www.mountainoffire.org/" target="_blank" rel="noopener" class="hover:text-mfm-purple transition flex items-center gap-1.5">MFM Global <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <button onclick="openJoinModal()" class="px-4 py-2.5 rounded-full text-[13.5px] font-[700] bg-white border border-[#e1d4c4] hover:border-[#d3c2aa] text-[#3b2a44] transition">Join a Fellowship</button>
+        <button onclick="openGiveModal()" class="px-4 py-2.5 rounded-full text-[13.5px] font-[700] bg-mfm-purple text-white hover:bg-[#3a1455] transition shadow-sm">Give</button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl border border-[#e4d6c5] bg-white">
+        <i data-lucide="menu" class="w-[20px] h-[20px]"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-[#eadfcf] bg-[#f9f5ef]">
+    <div class="px-5 py-4 flex flex-col gap-3 text-[15px] font-[600] text-[#3f2f46]">
+      <a href="#campuses" class="mobile-nav-link py-1.5">Campuses</a>
+      <a href="#events" class="mobile-nav-link py-1.5">National Events</a>
+      <a href="#prayer" class="mobile-nav-link py-1.5">Prayer Altar</a>
+      <a href="#resources" class="mobile-nav-link py-1.5">Resources</a>
+      <a href="https://www.mountainoffire.org/" target="_blank" class="mobile-nav-link py-1.5">MFM Global</a>
+      <div class="flex gap-2 pt-2">
+        <button onclick="openJoinModal(); closeMobileMenu()" class="flex-1 py-3 rounded-full bg-white border border-[#ddcfbb] font-[700] text-[13.5px]">Join</button>
+        <button onclick="openPioneerModal(); closeMobileMenu()" class="flex-1 py-3 rounded-full bg-mfm-gold text-[#3a2208] font-[700] text-[13.5px]">Pioneer</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN VIEWS WRAPPER -->
+<div id="app-views">
+  <!-- NATIONAL HOME VIEW -->
+  <main id="view-national">
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#f6efe3] via-[#f9f5ef] to-[#f9f5ef]"></div>
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative">
+        <div class="pt-16 md:pt-24 pb-10 md:pb-16 grid lg:grid-cols-12 gap-12 items-center">
+          <!-- Left -->
+          <div class="lg:col-span-7">
+            <div class="reveal">
+              <div class="gold-pill inline-flex items-center gap-2 mb-5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#c8872a]"></span>
+                140+ CAMPUSES • 36 STATES + FCT
+              </div>
+              <h1 class="font-display text-[44px] sm:text-[62px] md:text-[76px] leading-[0.93] tracking-[-0.025em] text-mfm-purple">
+                Raising<br/>fire-full<br/>campus saints.
+              </h1>
+              <p class="text-[17.5px] md:text-[19px] leading-relaxed text-[#514457] max-w-[540px] mt-6">
+                MFMCAMPUSHQ is the official national campus fellowship network of Mountain of Fire and Miracles Ministries. Find your campus, join a fire fellowship this week.
+              </p>
+            </div>
+            <div class="reveal reveal-delay-1 flex flex-wrap gap-3 mt-7">
+              <button onclick="document.getElementById('campus-finder').scrollIntoView({behavior:'smooth'})" class="px-6 py-3.5 rounded-full bg-mfm-purple text-white font-[700] text-[14.5px] shadow-[0_10px_30px_rgba(74,26,107,.22)] hover:bg-[#3b1456] transition flex items-center gap-2">
+                Find My Campus <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+              <button onclick="openJoinModal()" class="px-6 py-3.5 rounded-full bg-white border border-[#dcc9b1] font-[700] text-[14.5px] text-[#3d2b45] hover:border-[#cbb596] transition">
+                I'm New Here
+              </button>
+              <button onclick="openPioneerModal()" class="px-5 py-3.5 rounded-full font-mono text-[12px] text-[#6b556f] hover:text-mfm-purple transition">Pioneer a campus ?</button>
+            </div>
+
+            <!-- Stats strip -->
+            <div class="reveal reveal-delay-2 grid grid-cols-3 sm:flex sm:flex-wrap gap-6 sm:gap-10 mt-10 pt-8 border-t border-[#e4d7c6] max-w-xl text-[#413245]">
+              <div>
+                <div class="font-display text-[30px]">140+</div>
+                <div class="text-[11.5px] font-mono uppercase tracking-wider text-mfm-stone">Campuses</div>
+              </div>
+              <div>
+                <div class="font-display text-[30px]">28k</div>
+                <div class="text-[11.5px] font-mono uppercase tracking-wider text-mfm-stone">Students</div>
+              </div>
+              <div>
+                <div class="font-display text-[30px]">6</div>
+                <div class="text-[11.5px] font-mono uppercase tracking-wider text-mfm-stone">Geo Zones</div>
+              </div>
+              <div>
+                <div class="font-display text-[30px]">52</div>
+                <div class="text-[11.5px] font-mono uppercase tracking-wider text-mfm-stone">Sundays / yr</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right visual -->
+          <div class="lg:col-span-5 reveal reveal-delay-1">
+            <div class="relative rounded-[30px] overflow-hidden bg-[#2d1042] text-[#f6e8cf] shadow-[0_24px_70px_rgba(45,16,66,.22)] campus-hero-grid">
+              <div class="absolute inset-0 grain opacity-[.08]"></div>
+              <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80" class="w-full h-[390px] md:h-[510px] object-cover opacity-[.55] mix-blend-luminosity" alt="Campus fellowship worship" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#2d1042] via-[#2d1042]/55 to-transparent"></div>
+
+              <!-- Floating info cards -->
+              <div class="absolute top-6 left-6 right-6 flex justify-between items-start">
+                <div class="bg-white/10 backdrop-blur-xl border border-white/15 rounded-[16px] px-4 py-3">
+                  <div class="text-[10px] font-mono uppercase tracking-wider opacity-80">This Week Nationwide</div>
+                  <div class="font-display text-[20px] mt-1">Prayer Rain • Campus Edition</div>
+                </div>
+                <div class="bg-[#d7a84a] text-[#2d1042] font-[700] text-[11.5px] px-3 py-1.5 rounded-full">LIVE</div>
+              </div>
+
+              <div class="absolute bottom-0 left-0 right-0 p-7">
+                <div class="text-[11px] font-mono tracking-wider text-[#e1c48d]">FEATURED CAMPUS</div>
+                <div class="font-display text-[31px] leading-tight mt-1">MFMCF UNILAG</div>
+                <div class="text-[13.5px] text-[#dfc7e6] mt-1">Akoka, Lagos • Sundays 8:00AM • Wed 5:30PM</div>
+                <button onclick="openCampus('unilag')" class="mt-4 px-4 py-2.5 rounded-full bg-white text-mfm-purple-dark font-[700] text-[13px]">View Campus Page</button>
+              </div>
+            </div>
+
+            <!-- mini cards -->
+            <div class="grid grid-cols-2 gap-3 mt-3">
+              <div class="soft-card !rounded-[18px] px-4 py-3">
+                <div class="text-[11px] font-mono text-mfm-stone">PRAYER ALTAR</div>
+                <div class="font-[700] text-[14px] mt-1 text-mfm-purple">1,842 praying live</div>
+              </div>
+              <div class="soft-card !rounded-[18px] px-4 py-3">
+                <div class="text-[11px] font-mono text-mfm-stone">NEXT NATIONAL</div>
+                <div class="font-[700] text-[14px] mt-1 text-mfm-purple">CF Leaders Summit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAMPUS FINDER -->
+    <section id="campuses" class="py-16 md:py-24 border-t border-[#e6d8c5] bg-[#fcf9f4]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10" id="campus-finder">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 reveal">
+          <div>
+            <div class="gold-pill mb-3">Campus Directory</div>
+            <h2 class="font-display text-[38px] md:text-[52px] tracking-[-0.018em] text-mfm-purple leading-[1.02]">Find your MFMCF<br/>campus fellowship</h2>
+          </div>
+          <div class="text-[14.5px] text-[#5e4e62] max-w-sm">140 fellowships across Nigeria's tertiary institutions. Can't find yours? Pioneer one in 14 days.</div>
+        </div>
+
+        <!-- Search / filters -->
+        <div class="reveal soft-card p-3 md:p-4 flex flex-col md:flex-row gap-3 items-stretch md:items-center mb-7">
+          <div class="flex-1 relative">
+            <i data-lucide="search" class="w-4 h-4 text-mfm-stone absolute left-4 top-1/2 -translate-y-1/2"></i>
+            <input id="campus-search" placeholder="Search campus, city, state…" class="fi !bg-white pl-10" />
+          </div>
+          <select id="campus-zone-filter" class="fi !bg-white md:w-[200px]">
+            <option value="">All Geo-Zones</option>
+            <option>South-West</option>
+            <option>South-South</option>
+            <option>South-East</option>
+            <option>North-Central</option>
+            <option>North-West</option>
+            <option>North-East</option>
+          </select>
+          <select id="campus-state-filter" class="fi !bg-white md:w-[190px]">
+            <option value="">All States</option>
+            <option>Lagos</option>
+            <option>Oyo</option>
+            <option>Ogun</option>
+            <option>Osun</option>
+            <option>FCT</option>
+            <option>Rivers</option>
+            <option>Enugu</option>
+            <option>Kaduna</option>
+            <option>Kwara</option>
+            <option>Edo</option>
+          </select>
+          <button onclick="resetCampusFilters()" class="px-4 py-3 rounded-[12px] text-[13px] font-[700] text-[#5a425f] hover:bg-[#f5ede2] transition">Reset</button>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8">
+          <!-- Campus grid -->
+          <div class="lg:col-span-8">
+            <div id="campus-grid" class="grid sm:grid-cols-2 gap-5">
+              <!-- JS renders -->
+            </div>
+            <div class="text-center mt-8">
+              <button id="load-more-campuses" class="px-5 py-3 rounded-full border border-[#dbc9b2] bg-white text-[13.5px] font-[700] text-[#4a324f] hover:border-[#c8b294]">Load all 140 campuses</button>
+              <div class="text-[12.5px] text-mfm-stone mt-2 font-mono" id="campus-count-note"></div>
+            </div>
+          </div>
+
+          <!-- Map / right column -->
+          <div class="lg:col-span-4">
+            <div class="soft-card p-6 sticky top-[96px]">
+              <div class="font-display text-[23px] text-mfm-purple">Nigeria Campus Map</div>
+              <p class="text-[13.5px] text-[#5b4c5f] mt-1">Tap a dot to jump to a zone fellowship.</p>
+              
+              <!-- Stylized Nigeria map -->
+              <div class="relative mt-5 rounded-[18px] bg-gradient-to-br from-[#f7f0e5] to-[#efe3d2] border border-[#e1cfb8] h-[290px] overflow-hidden flex items-center justify-center">
+                <svg viewBox="0 0 400 260" class="w-full h-full">
+                  <!-- simple nigeria silhouette-ish -->
+                  <path d="M60 90 C120 60, 210 48, 300 70 C340 86, 350 130, 330 168 C293 197, 230 210, 170 202 C120 195, 80 168, 60 130 Z" fill="#e8d8c1"/>
+                  <!-- Zone dots -->
+                  <g font-family="Instrument Sans" font-size="9" fill="#6a436f">
+                    <circle cx="104" cy="158" r="5" fill="#d7a84a" class="map-dot"/>
+                    <text x="90" y="175">SW</text>
+                    <circle cx="192" cy="167" r="5" fill="#d7a84a" class="map-dot" style="animation-delay:.3s"/>
+                    <text x="176" y="184">SE/SS</text>
+                    <circle cx="168" cy="115" r="5" fill="#8c4fb5" class="map-dot" style="animation-delay:.6s"/>
+                    <text x="148" y="107">NC</text>
+                    <circle cx="150" cy="82" r="5" fill="#8c4fb5" class="map-dot" style="animation-delay:.9s"/>
+                    <text x="127" y="74">NW</text>
+                    <circle cx="245" cy="89" r="5" fill="#8c4fb5" class="map-dot" style="animation-delay:1.2s"/>
+                    <text x="235" y="77">NE</text>
+                  </g>
+                </svg>
+                <div class="absolute bottom-3 left-3 right-3 text-[11px] font-mono text-[#7a617c] bg-white/60 backdrop-blur rounded-xl px-3 py-2 border border-white">
+                  6 Geo-Zones • 140 Chapters • Updated Jan 2026
+                </div>
+              </div>
+
+              <div class="mt-5 text-[13.5px] text-[#513e56] space-y-3">
+                <div class="flex items-center justify-between"><span>South-West Campuses</span><strong>47</strong></div>
+                <div class="flex items-center justify-between"><span>South-South / South-East</span><strong>38</strong></div>
+                <div class="flex items-center justify-between"><span>North-Central / North</span><strong>55</strong></div>
+              </div>
+
+              <button onclick="openPioneerModal()" class="w-full mt-5 py-3 rounded-full bg-[#fbf4e6] border border-[#e7cf9e] text-[#74491b] font-[700] text-[13.5px]">Don't see your school? Pioneer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING NATIONAL EVENTS -->
+    <section id="events" class="py-16 md:py-24 bg-[#f2e8d9] border-y border-[#decdba]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div class="reveal flex flex-wrap items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="gold-pill mb-3 bg-white border-[#e2c994]">National Calendar</div>
+            <h2 class="font-display text-[38px] md:text-[50px] text-mfm-purple tracking-[-0.015em]">Upcoming National Events</h2>
+          </div>
+          <button onclick="openModal('calendar-modal')" class="text-[13.5px] font-[700] text-mfm-purple hover:underline">View full calendar ?</button>
+        </div>
+
+        <div id="events-grid" class="grid md:grid-cols-3 gap-5 reveal">
+          <!-- JS inject -->
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW HERE / JOIN + PRAYER ALTAR two column -->
+    <section id="prayer" class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 grid lg:grid-cols-12 gap-10 items-start">
+        <!-- Join Form -->
+        <div class="lg:col-span-5 reveal">
+          <div class="soft-card p-7 md:p-9">
+            <div class="font-display text-[34px] md:text-[40px] leading-[1.05] text-mfm-purple">New to MFMCF?<br/>We'll connect you<br/>this week.</div>
+            <p class="text-[14.5px] text-[#58485c] mt-3">Fill this quick form. Your campus coordinator will reach you on WhatsApp in under 12 hours. Seriously.</p>
+
+            <form id="join-form" class="mt-6 space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <input required name="firstName" placeholder="First name" class="fi" />
+                <input required name="lastName" placeholder="Last name" class="fi" />
+              </div>
+              <input required type="tel" name="whatsapp" placeholder="WhatsApp number" class="fi" />
+              <input required type="email" name="email" placeholder="Email address" class="fi" />
+              <div class="grid grid-cols-2 gap-3">
+                <select required name="campus" class="fi" id="join-campus-select">
+                  <option value="">Select your campus</option>
+                </select>
+                <input name="level" placeholder="Level / Year" class="fi" />
+              </div>
+              <input name="hostel" placeholder="Hall / Hostel (optional)" class="fi" />
+              <select name="heard" class="fi">
+                <option value="">How did you hear about us?</option>
+                <option>Friend invited me</option>
+                <option>Social media</option>
+                <option>On campus</option>
+                <option>MFM Church</option>
+                <option>Other</option>
+              </select>
+              <button class="w-full py-3.5 rounded-full bg-mfm-purple text-white font-[700] text-[14.5px] hover:bg-[#3a1456] transition">Join My Campus Fellowship ?</button>
+              <div class="text-[11.5px] text-mfm-stone text-center">By joining, you agree to be contacted by your campus coordinator. Avg response: 4.2 hrs.</div>
+            </form>
+
+            <div class="mt-6 bg-[#fbf4e6] border border-[#ead0a2] rounded-[16px] px-4 py-3 text-[13px] text-[#6b4920]">
+              <strong>First time?</strong> Come 30 mins early this Sunday. Our Welcome Volunteers will meet you at the gate. — <span class="font-mono text-[11px]">MFMCF Care Team</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Prayer Altar -->
+        <div class="lg:col-span-7 reveal reveal-delay-1">
+          <div class="soft-card p-7 md:p-9 bg-[#27113a] text-[#f1e3d0] border-[#3b1d54] relative overflow-hidden">
+            <div class="absolute inset-0 grain opacity-[.075]"></div>
+            <div class="relative">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div class="font-display text-[34px] md:text-[40px]">National Prayer Altar</div>
+                  <div class="text-[#d6badf] text-[13.5px]">Live fire from campuses across Nigeria. Post yours. Pray with others.</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-[11px] uppercase tracking-wider font-mono text-[#ddb97d]">Live praying now</div>
+                  <div class="font-display text-[28px]" id="praying-live-count">1,842</div>
+                </div>
+              </div>
+
+              <!-- Submit prayer -->
+              <form id="prayer-form" class="mt-5 bg-white/[.055] border border-white/10 rounded-[18px] p-4">
+                <textarea id="prayer-input" required maxlength="260" placeholder="Type your prayer request… (Visible to the national altar)" class="w-full bg-transparent outline-none resize-none text-[15px] placeholder-[#c4a8ce] h-[66px]" ></textarea>
+                <div class="flex flex-wrap items-center gap-3 mt-2">
+                  <input id="prayer-name" placeholder="Name (or Anonymous)" class="fi !bg-white/[.08] !border-white/15 !text-[#f6e8ff] placeholder-[#c6a5d2] !py-[9px] flex-1 min-w-[170px]" />
+                  <select id="prayer-campus" class="fi !bg-white/[.08] !border-white/15 !text-[#f6e8ff] !py-[9px] w-[190px]">
+                    <option value="" style="color:#222">Select campus</option>
+                  </select>
+                  <label class="text-[12.5px] text-[#d2b3db] flex items-center gap-2"><input type="checkbox" id="prayer-anon" class="accent-[#d7a84a]"> Anonymous</label>
+                  <button class="ml-auto px-4 py-2.5 rounded-full bg-[#d7a84a] text-[#2c1940] font-[800] text-[13px]">Post Prayer</button>
+                </div>
+              </form>
+
+              <!-- Feed -->
+              <div class="mt-4 prayer-feed pr-1 space-y-3" id="prayer-feed">
+                <!-- JS -->
+              </div>
+
+              <div class="flex items-center justify-between text-[11.5px] font-mono text-[#c199ce] mt-4 pt-4 border-t border-white/10">
+                <span>PRAYER ALTAR • PSALM 65:2 • UPDATED LIVE</span>
+                <span id="prayer-count-label">184 prayers today</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonies / Leaders -->
+    <section id="resources" class="py-16 md:py-24 bg-[#fcf9f4] border-t border-[#e6d8c5]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-10">
+          <!-- Testimonies -->
+          <div class="lg:col-span-6 reveal">
+            <div class="gold-pill mb-3">Campus Testimonies</div>
+            <h3 class="font-display text-[36px] md:text-[44px] text-mfm-purple leading-[1.05] mb-5">What God is doing<br/>on our campuses</h3>
+            <div id="testimony-card" class="soft-card p-7 md:p-8 min-h-[220px] relative">
+              <!-- JS rotates -->
+            </div>
+            <div class="flex gap-2 mt-3">
+              <button onclick="prevTestimony()" class="px-3 py-2 rounded-full border border-[#dccab5] bg-white text-[12.5px]">? Prev</button>
+              <button onclick="nextTestimony()" class="px-3 py-2 rounded-full border border-[#dccab5] bg-white text-[12.5px]">Next ?</button>
+            </div>
+          </div>
+
+          <!-- Leadership structure -->
+          <div class="lg:col-span-6 reveal reveal-delay-1">
+            <div class="soft-card p-7 md:p-9 h-full">
+              <div class="gold-pill mb-3">MFMCF Leadership</div>
+              <h3 class="font-display text-[30px] md:text-[36px] text-mfm-purple">National Coordinating Structure</h3>
+              <div class="mt-5 grid sm:grid-cols-2 gap-4 text-[13.8px] text-[#4e3b52]">
+                <div class="bg-[#f9f3ea] border border-[#ead8bd] rounded-[16px] px-4 py-3">
+                  <div class="text-[11px] font-mono text-mfm-stone">NATIONAL</div>
+                  <div class="font-[700] mt-1">Pastor Michael A. Oluwafemi</div>
+                  <div class="text-mfm-stone">National Campus Coordinator</div>
+                </div>
+                <div class="bg-[#f9f3ea] border border-[#ead8bd] rounded-[16px] px-4 py-3">
+                  <div class="text-[11px] font-mono text-mfm-stone">ASST. NATIONAL</div>
+                  <div class="font-[700] mt-1">Pst. (Mrs) Grace Adeniyi</div>
+                  <div class="text-mfm-stone">Asst. National Coordinator</div>
+                </div>
+                <div class="bg-[#f9f3ea] border border-[#ead8bd] rounded-[16px] px-4 py-3">
+                  <div class="text-[11px] font-mono text-mfm-stone">ZONAL</div>
+                  <div class="font-[700] mt-1">6 Regional Coordinators</div>
+                  <div class="text-mfm-stone">SW, SE, SS, NC, NW, NE</div>
+                </div>
+                <div class="bg-[#f9f3ea] border border-[#ead8bd] rounded-[16px] px-4 py-3">
+                  <div class="text-[11px] font-mono text-mfm-stone">STATES</div>
+                  <div class="font-[700] mt-1">36 State Coordinators</div>
+                  <div class="text-mfm-stone">+ FCT Campus Pastor</div>
+                </div>
+                <div class="bg-[#f9f3ea] border border-[#ead8bd] rounded-[16px] px-4 py-3 sm:col-span-2">
+                  <div class="text-[11px] font-mono text-mfm-stone">VOLUNTEER LEADS</div>
+                  <div class="font-[700] mt-1">Prayer • Evangelism • Media • Welfare • Music • Protocols</div>
+                  <div class="text-mfm-stone">in every campus fellowship</div>
+                </div>
+              </div>
+              <div class="mt-4 text-[12.5px] text-mfm-stone">Full leadership directory is available on each campus fellowship page.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resources row -->
+        <div class="grid md:grid-cols-3 gap-5 mt-10 reveal">
+          <div class="soft-card p-6">
+            <div class="w-10 h-10 rounded-xl bg-[#fbf4e6] border border-[#e8cf9d] flex items-center justify-center mb-3"><i data-lucide="book-open" class="w-[18px] h-[18px] text-[#9a6121]"></i></div>
+            <div class="font-display text-[22px] text-mfm-purple">Sermon Library</div>
+            <p class="text-[13.8px] text-[#5b4b5f] mt-1">Sunday fire messages, midweek teachings. Audio & notes.</p>
+            <button onclick="openModal('sermon-modal')" class="mt-3 text-[13px] font-[700] text-mfm-purple hover:underline">Browse sermons ?</button>
+          </div>
+          <div class="soft-card p-6">
+            <div class="w-10 h-10 rounded-xl bg-[#fbf4e6] border border-[#e8cf9d] flex items-center justify-center mb-3"><i data-lucide="calendar-days" class="w-[18px] h-[18px] text-[#9a6121]"></i></div>
+            <div class="font-display text-[22px] text-mfm-purple">Daily Devotional</div>
+            <p class="text-[13.8px] text-[#5b4b5f] mt-1">Campus Fire Devotional. 5-min read. New every 5AM.</p>
+            <button onclick="openModal('devotional-modal')" class="mt-3 text-[13px] font-[700] text-mfm-purple hover:underline">Read today ?</button>
+          </div>
+          <div class="soft-card p-6">
+            <div class="w-10 h-10 rounded-xl bg-[#fbf4e6] border border-[#e8cf9d] flex items-center justify-center mb-3"><i data-lucide="radio" class="w-[18px] h-[18px] text-[#9a6121]"></i></div>
+            <div class="font-display text-[22px] text-mfm-purple">MFMCF Radio</div>
+            <p class="text-[13.8px] text-[#5b4b5f] mt-1">24/7 worship, prayer rain replays, campus testimonies.</p>
+            <button onclick="openModal('radio-modal')" class="mt-3 text-[13px] font-[700] text-mfm-purple hover:underline">Listen live ?</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIONEER CTA -->
+    <section class="py-16 md:py-24 bg-[#2d1042] text-[#f4e4c8] relative overflow-hidden">
+      <div class="absolute inset-0 grain opacity-[.07]"></div>
+      <div class="absolute -right-24 -top-28 w-[420px] h-[420px] rounded-full bg-[#d7a84a]/[0.07] blur-[90px]"></div>
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 relative text-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 text-[11px] font-mono tracking-wider text-[#e2c080] bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">PIONEER A CAMPUS FELLOWSHIP</div>
+          <h3 class="font-display text-[38px] md:text-[56px] leading-[1.02] mt-5">No MFMCF on your campus yet?<br/>Let’s start one together.</h3>
+          <p class="text-[16.5px] text-[#d4bcd8] max-w-2xl mx-auto mt-4">
+            We provide training, a launch kit, an assigned state coordinator, prayer covering, and startup materials. Average launch time: 14 days.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3 mt-7">
+            <button onclick="openPioneerModal()" class="px-6 py-3.5 rounded-full bg-[#d7a84a] text-[#28113a] font-[800]">Apply to Pioneer ?</button>
+            <button onclick="showToast('Downloaded Pioneer Starter Pack PDF.', 'gold')" class="px-6 py-3.5 rounded-full border border-white/20 text-[#f1d8a9] font-[700] hover:bg-white/5">Download Starter Pack</button>
+          </div>
+          <div class="text-[12.5px] text-[#b996c6] mt-4 font-mono">48 NEW PIONEER FELLOWSHIPS LAUNCHED IN 2025</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1c0b2a] text-[#d7c5df] pt-14 pb-10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div class="grid md:grid-cols-5 gap-10 text-[14px]">
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-[14px] bg-gradient-to-br from-[#f3d38a] to-[#d7a84a] flex items-center justify-center"><i data-lucide="flame" class="w-5 h-5 text-[#4a1a6b]"></i></div>
+              <div>
+                <div class="font-display text-[20px] text-[#f8ebcf]">MFMCAMPUSHQ</div>
+                <div class="text-[11px] font-mono text-[#b999c6]">MFM CAMPUS FELLOWSHIP NIGERIA</div>
+              </div>
+            </div>
+            <p class="text-[#c4a9cf] max-w-sm">A campus mission network of Mountain of Fire and Miracles Ministries Worldwide. Raising fire-full, word-rooted, prayer-addicted campus saints.</p>
+            <div class="flex gap-3 mt-4 text-[#d8b978]">
+              <a href="https://instagram.com/mfmworldwide" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram" class="w-[18px] h-[18px]"></i></a>
+              <a href="https://youtube.com/@MFMMinistries" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube" class="w-[18px] h-[18px]"></i></a>
+              <a href="#" onclick="showToast('Opening WhatsApp Channel'); return false;"><i data-lucide="message-circle" class="w-[18px] h-[18px]"></i></a>
+              <a href="https://twitter.com/mfmministries" target="_blank" rel="noopener noreferrer"><i data-lucide="twitter" class="w-[18px] h-[18px]"></i></a>
+            </div>
+          </div>
+          <div>
+            <div class="font-[700] text-[#f2e0b8] mb-3">Campuses</div>
+            <ul class="space-y-2 text-[#c7a8d2]">
+              <li><a href="#campuses" class="hover:text-white">Find a Campus</a></li>
+              <li><a href="#" onclick="openPioneerModal(); return false;" class="hover:text-white">Pioneer</a></li>
+              <li><a href="#" onclick="openModal('leaders-modal'); return false;" class="hover:text-white">Leaders Portal</a></li>
+              <li><a href="#" onclick="openModal('volunteer-modal'); return false;" class="hover:text-white">Volunteer</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-[700] text-[#f2e0b8] mb-3">National</div>
+            <ul class="space-y-2 text-[#c7a8d2]">
+              <li><a href="#events" class="hover:text-white">Events</a></li>
+              <li><a href="#prayer" class="hover:text-white">Prayer Altar</a></li>
+              <li><a href="#resources" class="hover:text-white">Sermons</a></li>
+              <li><a href="https://www.mountainoffire.org/" target="_blank" class="hover:text-white">MFM Global</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-[700] text-[#f2e0b8] mb-3">Contact</div>
+            <ul class="space-y-2 text-[#c7a8d2]">
+              <li>MFMCAMPUSHQ National Secretariat<br/>Lagos, Nigeria</li>
+              <li>campushq@mfmworldwide.org</li>
+              <li>+234 800 MFM CFHQ</li>
+              <li class="pt-1"><button onclick="openJoinModal()" class="text-[#f0c97a] font-[700]">Join this week ?</button></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-white/10 mt-10 pt-6 flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-[#a787b3]">
+          <div>© 2026 MFMCAMPUSHQ • Mountain of Fire & Miracles Ministries. All rights reserved.</div>
+          <div class="flex gap-5 font-mono">
+            <a href="#" onclick="showToast('Privacy Policy'); return false;" class="hover:text-[#e5cc8c]">Privacy</a>
+            <a href="#" onclick="showToast('Terms'); return false;" class="hover:text-[#e5cc8c]">Terms</a>
+            <a href="https://www.mountainoffire.org/" target="_blank" class="hover:text-[#e5cc8c]">mfmworldwide.org ?</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  
+  <!-- Full Calendar Modal -->
+  <div id="calendar-modal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-5">
+    <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/70 backdrop-blur-md" onclick="closeModal('calendar-modal')"></div>
+    <div class="modal-content relative w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-white rounded-[24px] shadow-2xl p-6 md:p-10 border border-[#e8e0d7]">
+      <button onclick="closeModal('calendar-modal')" class="absolute right-4 top-4 p-2 rounded-full bg-[#f9f5ef] hover:bg-[#f3e9da] transition text-[#4a1a6b]"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <div class="font-display text-[32px] text-[#4a1a6b] mb-6 flex items-center gap-3"><i data-lucide="calendar" class="w-8 h-8 text-[#d7a84a]"></i> National Events Calendar 2026</div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="p-5 border border-[#e8e0d7] rounded-[16px] hover:shadow-lg transition">
+          <div class="text-[12px] font-mono text-[#d7a84a] mb-1">FEBRUARY 14-16</div>
+          <div class="font-[700] text-[18px] text-[#2d1042]">National Campus Prayer Rain</div>
+          <p class="text-[14px] text-[#6f6675] mt-2">Annual 3-day fasting and prayer program across all campuses.</p>
+        </div>
+        <div class="p-5 border border-[#e8e0d7] rounded-[16px] hover:shadow-lg transition">
+          <div class="text-[12px] font-mono text-[#d7a84a] mb-1">MARCH 8-10</div>
+          <div class="font-[700] text-[18px] text-[#2d1042]">CF Leaders Summit</div>
+          <p class="text-[14px] text-[#6f6675] mt-2">Executive training for all campus coordinators.</p>
+        </div>
+        <div class="p-5 border border-[#e8e0d7] rounded-[16px] hover:shadow-lg transition">
+          <div class="text-[12px] font-mono text-[#d7a84a] mb-1">MAY 22-25</div>
+          <div class="font-[700] text-[18px] text-[#2d1042]">Word & Fire Conference</div>
+          <p class="text-[14px] text-[#6f6675] mt-2">Deep word exposition and impartation service.</p>
+        </div>
+        <div class="p-5 border border-[#e8e0d7] rounded-[16px] hover:shadow-lg transition">
+          <div class="text-[12px] font-mono text-[#d7a84a] mb-1">OCTOBER 1-3</div>
+          <div class="font-[700] text-[18px] text-[#2d1042]">National Evangelism Storm</div>
+          <p class="text-[14px] text-[#6f6675] mt-2">Simultaneous mass evangelism in all 140 campuses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sermon Library Modal -->
+  <div id="sermon-modal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-5">
+    <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/80 backdrop-blur-md" onclick="closeModal('sermon-modal')"></div>
+    <div class="modal-content relative w-full max-w-3xl bg-[#2d1042] text-white rounded-[24px] shadow-2xl p-6 md:p-10 border border-[#4a1a6b] overflow-hidden">
+      <div class="absolute inset-0 grain opacity-[0.1]"></div>
+      <button onclick="closeModal('sermon-modal')" class="absolute z-10 right-4 top-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <div class="relative z-10">
+        <div class="font-display text-[32px] text-[#f3d38a] mb-2 flex items-center gap-3"><i data-lucide="headphones" class="w-8 h-8"></i> Sermon Library</div>
+        <p class="text-[#c4a9cf] text-[15px] mb-8">Listen to life-transforming messages from our campus pulpits.</p>
+        
+        <div class="space-y-4">
+          <div class="bg-white/5 border border-white/10 p-4 rounded-[16px] flex items-center gap-4 hover:bg-white/10 transition cursor-pointer" onclick="playSermon(this)">
+            <button class="w-12 h-12 rounded-full bg-[#d7a84a] text-[#2d1042] flex items-center justify-center flex-shrink-0"><i data-lucide="play" class="w-5 h-5 ml-1"></i></button>
+            <div class="flex-1">
+              <div class="font-[700] text-[16px] text-white">The Power of Campus Revival</div>
+              <div class="text-[13px] text-[#a787b3]">Pastor Michael A. Oluwafemi • 45 mins</div>
+            </div>
+          </div>
+          <div class="bg-white/5 border border-white/10 p-4 rounded-[16px] flex items-center gap-4 hover:bg-white/10 transition cursor-pointer" onclick="playSermon(this)">
+            <button class="w-12 h-12 rounded-full bg-[#d7a84a] text-[#2d1042] flex items-center justify-center flex-shrink-0"><i data-lucide="play" class="w-5 h-5 ml-1"></i></button>
+            <div class="flex-1">
+              <div class="font-[700] text-[16px] text-white">Navigating Academic Excellence</div>
+              <div class="text-[13px] text-[#a787b3]">Pst. (Mrs) Grace Adeniyi • 38 mins</div>
+            </div>
+          </div>
+          <div class="bg-white/5 border border-white/10 p-4 rounded-[16px] flex items-center gap-4 hover:bg-white/10 transition cursor-pointer" onclick="playSermon(this)">
+            <button class="w-12 h-12 rounded-full bg-[#d7a84a] text-[#2d1042] flex items-center justify-center flex-shrink-0"><i data-lucide="play" class="w-5 h-5 ml-1"></i></button>
+            <div class="flex-1">
+              <div class="font-[700] text-[16px] text-white">Fire on the Altar</div>
+              <div class="text-[13px] text-[#a787b3]">Pastor Daniel K. • 52 mins</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Devotional Modal -->
+  <div id="devotional-modal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-5">
+    <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/70 backdrop-blur-md" onclick="closeModal('devotional-modal')"></div>
+    <div class="modal-content relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#fbf4e6] rounded-[24px] shadow-2xl p-6 md:p-10 border border-[#e8cf9f]">
+      <button onclick="closeModal('devotional-modal')" class="absolute right-4 top-4 p-2 rounded-full bg-white border border-[#e8cf9f] hover:bg-[#f3e9da] transition text-[#7a5120]"><i data-lucide="x" class="w-5 h-5"></i></button>
+      
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#d7a84a]/20 text-[#7a5120] rounded-full text-[12px] font-[700] font-mono mb-4"><i data-lucide="sun" class="w-4 h-4"></i> TODAY'S READING</div>
+        <h2 class="font-display text-[36px] text-[#4a1a6b] leading-tight">Walking in Divine Purpose on Campus</h2>
+        <div class="text-[#6f6675] mt-2">Text: Jeremiah 29:11, Proverbs 3:5-6</div>
+      </div>
+      
+      <div class="prose prose-lg text-[#2d1042] leading-relaxed">
+        <p>Welcome to another beautiful day. The campus environment is filled with diverse voices and distractions, but your primary anchor must remain the Word of God.</p>
+        <p>Many students lose their way because they fail to realize that their admission into the university was not just for academic pursuit, but a divine placement by God to shine as light.</p>
+        <div class="p-5 my-6 bg-white border-l-4 border-[#d7a84a] rounded-r-[12px] italic text-[#4a1a6b] font-[600]">
+          "For I know the thoughts that I think toward you, saith the Lord, thoughts of peace, and not of evil, to give you an expected end." - Jeremiah 29:11
+        </div>
+        <p>Today, make a conscious decision to align your academic goals with God's overarching purpose for your life. Engage in prayer, study the word, and do not compromise your faith for temporary pleasures.</p>
+        <h3 class="font-[700] text-[20px] mt-6 mb-2 text-[#4a1a6b]">Prayer Point:</h3>
+        <p class="font-[600] text-[#7a5120]">Lord, open my eyes to see my divine placement and purpose on this campus in Jesus name.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio Modal -->
+  <div id="radio-modal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-5 pointer-events-none">
+    <div class="modal-content pointer-events-auto relative w-full max-w-sm bg-[#18131d] text-white rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 border border-[#2d1042] mt-auto md:mb-10 mx-auto overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#4a1a6b]/40 to-transparent opacity-50"></div>
+      <button onclick="closeModal('radio-modal')" class="absolute z-10 right-4 top-4 p-2 rounded-full hover:bg-white/10 transition text-white/70 hover:text-white"><i data-lucide="chevron-down" class="w-5 h-5"></i></button>
+      
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <div class="w-20 h-20 rounded-[20px] bg-gradient-to-br from-[#d7a84a] to-[#b77a2a] flex items-center justify-center shadow-[0_10px_30px_rgba(215,168,74,0.3)] mb-4">
+          <i data-lucide="radio" class="w-10 h-10 text-[#2d1042]"></i>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full text-[10px] font-mono font-[700] mb-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> LIVE
+        </div>
+        <h3 class="font-display text-[22px] text-white">MFMCF Radio</h3>
+        <p class="text-[#a787b3] text-[13px] mb-6">Currently Playing: Deep Worship Vol. 4</p>
+        
+        <div class="flex items-center gap-6 mb-2">
+          <button class="text-white/50 hover:text-white transition"><i data-lucide="skip-back" class="w-6 h-6"></i></button>
+          <button id="radio-play-btn" onclick="toggleRadioPlay()" class="w-14 h-14 rounded-full bg-white text-[#2d1042] flex items-center justify-center hover:scale-105 transition shadow-[0_5px_15px_rgba(255,255,255,0.2)]">
+            <i data-lucide="play" class="w-6 h-6 ml-1" id="radio-icon"></i>
+          </button>
+          <button class="text-white/50 hover:text-white transition"><i data-lucide="skip-forward" class="w-6 h-6"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Volunteer Modal -->
+  <div id="volunteer-modal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-5">
+    <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/70 backdrop-blur-md" onclick="closeModal('volunteer-modal')"></div>
+    <div class="modal-content relative w-full max-w-lg bg-white rounded-[24px] shadow-2xl p-6 md:p-10 border border-[#e8e0d7]">
+      <button onclick="closeModal('volunteer-modal')" class="absolute right-4 top-4 p-2 rounded-full bg-[#f9f5ef] hover:bg-[#e8e0d7] transition text-[#2d1042]"><i data-lucide="x" class="w-5 h-5"></i></button>
+      
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 mx-auto bg-[#fbf4e6] rounded-full flex items-center justify-center mb-3 text-[#d7a84a]">
+          <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+        </div>
+        <h2 class="font-display text-[28px] text-[#4a1a6b]">Join the Workforce</h2>
+        <p class="text-[#6f6675] text-[14px] mt-1">Serve God and grow with us in the campus fellowship.</p>
+      </div>
+
+      <form id="volunteer-form" onsubmit="handleVolunteer(event)" class="space-y-4">
+        <input required type="text" placeholder="Full Name" class="fi" />
+        <input required type="email" placeholder="Email Address" class="fi" />
+        <input required type="tel" placeholder="WhatsApp Number" class="fi" />
+        <select required class="fi">
+          <option value="">Select Department of Interest</option>
+          <option>Prayer Band</option>
+          <option>Evangelism & Follow-up</option>
+          <option>Media & IT</option>
+          <option>Choir / Music</option>
+          <option>Ushering & Protocol</option>
+          <option>Welfare</option>
+        </select>
+        <textarea required placeholder="Why do you want to join this department?" class="fi resize-none h-[80px]"></textarea>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-[#4a1a6b] text-white font-[700] text-[15px] hover:bg-[#2d1042] transition relative shadow-[0_10px_20px_rgba(74,26,107,0.2)]">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Leaders Portal Modal -->
+  <div id="leaders-modal" class="fixed inset-0 z-[80] hidden flex items-center justify-center p-5">
+    <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/90 backdrop-blur-lg" onclick="closeModal('leaders-modal')"></div>
+    <div class="modal-content relative w-full max-w-md bg-[#2d1042] text-white rounded-[24px] shadow-2xl p-8 border border-[#6a2d93]">
+      <button onclick="closeModal('leaders-modal')" class="absolute right-4 top-4 p-2 rounded-full hover:bg-white/10 transition text-white/70 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[#6a2d93] to-[#4a1a6b] mb-4 shadow-[0_0_30px_rgba(106,45,147,0.4)]">
+          <i data-lucide="shield" class="w-7 h-7 text-[#d7a84a]"></i>
+        </div>
+        <h2 class="font-display text-[26px]">Leaders Portal</h2>
+        <p class="text-[#c4a9cf] text-[13px] mt-1 font-mono">AUTHORIZED ACCESS ONLY</p>
+      </div>
+
+      <form id="leaders-form" onsubmit="handleLeadersLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-[12px] font-[600] text-[#a787b3] mb-1 uppercase tracking-wider">Leadership ID</label>
+          <input required type="text" placeholder="e.g. MFM-CF-1049" class="w-full bg-[#18131d] border border-[#4a1a6b] rounded-[12px] px-4 py-3 text-white focus:outline-none focus:border-[#d7a84a] transition" />
+        </div>
+        <div>
+          <label class="block text-[12px] font-[600] text-[#a787b3] mb-1 uppercase tracking-wider">Passcode</label>
+          <input required type="password" placeholder="••••••••" class="w-full bg-[#18131d] border border-[#4a1a6b] rounded-[12px] px-4 py-3 text-white focus:outline-none focus:border-[#d7a84a] transition" />
+        </div>
+        <button type="submit" class="w-full mt-2 py-3.5 rounded-[12px] bg-[#d7a84a] text-[#2d1042] font-[800] text-[15px] hover:bg-[#f3d38a] transition shadow-[0_10px_20px_rgba(215,168,74,0.2)]">Authenticate</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CAMPUS HUB VIEW -->
+  <main id="view-campus" class="hidden">
+    <div class="bg-[#2d1042] text-[#f3e3c8] relative overflow-hidden">
+      <div class="absolute inset-0 grain opacity-[.07]"></div>
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-10 md:py-14 relative">
+        <button onclick="closeCampus()" class="text-[12.5px] font-mono text-[#e0ba7d] hover:text-white flex items-center gap-2 mb-6"><i data-lucide="arrow-left" class="w-4 h-4"></i> ALL CAMPUSES</button>
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <div>
+            <div class="text-[11px] font-mono tracking-widest text-[#d8b577]" id="campus-hub-zone">SOUTH-WEST • LAGOS STATE</div>
+            <h1 class="font-display text-[44px] md:text-[64px] leading-[0.95] mt-2" id="campus-hub-name">MFMCF UNILAG</h1>
+            <div class="text-[#d2b6d8] mt-2 text-[15px]" id="campus-hub-tag">University of Lagos • Akoka</div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="openJoinModal()" class="px-5 py-3 rounded-full bg-[#d7a84a] text-[#2d1042] font-[800] text-[13.5px]">Join this Campus</button>
+            <button onclick="document.getElementById('campus-contact-block').scrollIntoView({behavior:'smooth'})" class="px-5 py-3 rounded-full border border-white/20 text-[#f2d9ab] font-[700] text-[13.5px]">Contact Coordinator</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-[#f9f5ef]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-10 md:py-14 grid lg:grid-cols-12 gap-10">
+        <!-- Left/main -->
+        <div class="lg:col-span-8 space-y-8">
+          <!-- About / gallery -->
+          <div class="soft-card p-6 md:p-8">
+            <div class="grid md:grid-cols-5 gap-6 items-start">
+              <div class="md:col-span-3">
+                <div class="font-display text-[30px] text-mfm-purple mb-3">About MFMCF <span id="campus-about-short">UNILAG</span></div>
+                <p class="text-[15.5px] leading-relaxed text-[#4a3a4d]" id="campus-about-text">
+                  We are a vibrant campus fellowship raising fire-brand students at the University of Lagos. Word, Prayer, Holiness. Weekly power-packed services, departmental cell fellowships, and 24/7 prayer chain.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4 text-[12px]" id="campus-tags">
+                  <span class="px-3 py-1.5 rounded-full bg-[#fbf4e6] border border-[#e8cf9f] text-[#7a5120]">Prayer Rain</span>
+                  <span class="px-3 py-1.5 rounded-full bg-[#fbf4e6] border border-[#e8cf9f] text-[#7a5120]">Bible Study</span>
+                  <span class="px-3 py-1.5 rounded-full bg-[#fbf4e6] border border-[#e8cf9f] text-[#7a5120]">Evangelism</span>
+                </div>
+              </div>
+              <div class="md:col-span-2">
+                <img id="campus-hero-img" src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=800&q=80" class="w-full h-[190px] object-cover rounded-[16px]" alt="Campus fellowship" />
+                <div class="text-[11.5px] text-mfm-stone mt-2 font-mono" id="campus-members-count">~620 active members</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Schedule -->
+          <div class="soft-card p-6 md:p-8">
+            <div class="font-display text-[26px] text-mfm-purple mb-4">Weekly Schedule</div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-[14px]">
+                <tbody id="campus-schedule-body" class="divide-y divide-[#e9ddd0] text-[#3b2d3f]">
+                  <!-- JS -->
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4 text-[13px] text-[#5b4a5d]" id="campus-venue-text">
+              <strong>Venue:</strong> MFMCF Chapel, Behind Faculty of Science, UNILAG Akoka. <a href="#" onclick="showToast('Opening Google Maps'); return false;" class="text-mfm-purple font-[700] underline">Open in Maps ?</a>
+            </div>
+          </div>
+
+          <!-- Announcements / Events -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="soft-card p-6">
+              <div class="font-display text-[22px] text-mfm-purple mb-3">Campus Announcements</div>
+              <ul class="space-y-3 text-[14px] text-[#443447]" id="campus-announcements">
+                <!-- JS -->
+              </ul>
+            </div>
+            <div class="soft-card p-6">
+              <div class="font-display text-[22px] text-mfm-purple mb-3">Upcoming at this Campus</div>
+              <ul class="space-y-3 text-[14px] text-[#443447]" id="campus-events">
+                <!-- JS -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="soft-card p-6 md:p-8">
+            <div class="flex items-center justify-between mb-4">
+              <div class="font-display text-[22px] text-mfm-purple">Fellowship Gallery</div>
+              <button onclick="showToast('Full gallery opening soon.')" class="text-[13px] font-[700] text-mfm-purple">See all ?</button>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="campus-gallery">
+              <!-- JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right sidebar -->
+        <aside class="lg:col-span-4 space-y-6">
+          <!-- Leadership card -->
+          <div class="soft-card p-6">
+            <div class="font-display text-[22px] text-mfm-purple mb-3">Campus Leadership</div>
+            <div class="space-y-3 text-[13.8px]" id="campus-leadership">
+              <!-- JS -->
+            </div>
+          </div>
+
+          <!-- Contact / Socials -->
+          <div class="soft-card p-6" id="campus-contact-block">
+            <div class="font-display text-[22px] text-mfm-purple mb-3">Contact & Socials</div>
+            <div class="text-[14px] text-[#433247] space-y-2" id="campus-contact-info">
+              <!-- JS -->
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <a href="#" onclick="handleCampusWhatsApp(); return false;" class="px-3 py-2 rounded-full bg-[#eaf8ee] border border-[#bfe7c8] text-[#176b39] text-[12.5px] font-[700]">WhatsApp Coordinator</a>
+              <a href="https://instagram.com/mfmworldwide" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-full bg-[#f9f1f8] border border-[#e6c9dd] text-[#7a2a5f] text-[12.5px] font-[700]">Instagram</a>
+              <a href="https://youtube.com/@MFMMinistries" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-full bg-[#fff1f1] border border-[#f3c7c7] text-[#a22b2b] text-[12.5px] font-[700]">YouTube</a>
+            </div>
+          </div>
+
+          <!-- Campus map -->
+          <div class="soft-card p-6">
+            <div class="font-display text-[20px] text-mfm-purple mb-2">Campus Map Pin</div>
+            <div class="rounded-[14px] overflow-hidden border border-[#e1cfb8] bg-[#f5ead8] h-[170px] flex items-center justify-center text-[13px] text-[#715b43]" id="campus-map-box">
+              UNILAG • Akoka<br/>Fellowship Chapel
+            </div>
+            <button onclick="showToast('Opening Google Maps directions.')" class="w-full mt-3 py-2.5 rounded-full border border-[#d7c2a7] bg-white text-[13px] font-[700]">Get Directions</button>
+          </div>
+
+          <!-- New here -->
+          <div class="soft-card p-6 bg-[#fbf4e6] border-[#e7cf9e]">
+            <div class="font-display text-[20px] text-[#6a3e12]">First time this Sunday?</div>
+            <p class="text-[13.5px] text-[#7a5229] mt-1">Text “NEW - <span id="campus-join-code">UNILAG</span>” to the coordinator. We’ll save you a seat and meet you at the entrance.</p>
+            <button onclick="openJoinModal()" class="mt-3 w-full py-2.5 rounded-full bg-[#d7a84a] text-[#2d1a08] font-[800] text-[13px]">Join this campus now</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- MODALS -->
+<!-- Join Modal -->
+<div id="join-modal" class="fixed inset-0 z-[70] hidden">
+  <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/70 backdrop-blur-sm" onclick="closeJoinModal()"></div>
+  <div class="relative min-h-full flex items-center justify-center p-5">
+    <div class="modal-content soft-card w-full max-w-xl p-7 md:p-9 relative">
+      <button onclick="closeJoinModal()" class="absolute right-4 top-4 p-2 rounded-full hover:bg-[#f3e9da]"><i data-lucide="x" class="w-4 h-4"></i></button>
+      <div class="font-display text-[30px] text-mfm-purple">Join your Campus Fellowship</div>
+      <p class="text-[14px] text-[#5a475d] mt-1">Your campus coordinator will reach you on WhatsApp in under 12 hours.</p>
+      <form id="join-modal-form" class="mt-5 space-y-3">
+        <div class="grid grid-cols-2 gap-3">
+          <input required name="firstName" placeholder="First name" class="fi" />
+          <input required name="lastName" placeholder="Last name" class="fi" />
+        </div>
+        <input required type="tel" name="whatsapp" placeholder="WhatsApp number" class="fi" />
+        <input required type="email" name="email" placeholder="Email" class="fi" />
+        <div class="grid grid-cols-2 gap-3">
+          <select required name="campus" class="fi" id="join-modal-campus-select"><option value="">Select campus</option></select>
+          <input name="level" placeholder="Level / Year" class="fi" />
+        </div>
+        <button class="w-full py-3.5 rounded-full bg-mfm-purple text-white font-[700]">Submit & Connect me</button>
+        <div class="text-[11.5px] text-mfm-stone text-center">Avg coordinator response: 4.2 hours • 2,143 new joiners this semester</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Pioneer Modal -->
+<div id="pioneer-modal" class="fixed inset-0 z-[70] hidden">
+  <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/70 backdrop-blur-sm" onclick="closePioneerModal()"></div>
+  <div class="relative min-h-full flex items-center justify-center p-5">
+    <div class="modal-content soft-card w-full max-w-xl p-7 md:p-9 relative">
+      <button onclick="closePioneerModal()" class="absolute right-4 top-4 p-2 rounded-full hover:bg-[#f3e9da]"><i data-lucide="x" class="w-4 h-4"></i></button>
+      <div class="font-display text-[30px] text-mfm-purple">Pioneer MFMCF on your Campus</div>
+      <p class="text-[14px] text-[#5a475d] mt-1">No fellowship on your campus yet? Apply. We’ll train you and launch with you in ~14 days.</p>
+      <form id="pioneer-form" class="mt-5 space-y-3">
+        <div class="grid grid-cols-2 gap-3">
+          <input required name="fullName" placeholder="Full name" class="fi" />
+          <input required name="phone" placeholder="WhatsApp / Phone" class="fi" />
+        </div>
+        <input required name="school" placeholder="Name of University / Polytechnic / College" class="fi" />
+        <div class="grid grid-cols-2 gap-3">
+          <input required name="state" placeholder="State" class="fi" />
+          <input name="students" placeholder="Est. Christian students interested" class="fi" />
+        </div>
+        <textarea name="vision" placeholder="Briefly, why do you want to pioneer MFMCF here?" class="fi h-[88px] resize-none"></textarea>
+        <button class="w-full py-3.5 rounded-full bg-[#d7a84a] text-[#2d1a08] font-[800]">Submit Pioneer Application</button>
+        <div class="text-[11.5px] text-mfm-stone text-center">A state coordinator will call you within 48 hrs. Pioneer kit & training provided free.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Give Modal -->
+<div id="give-modal" class="fixed inset-0 z-[70] hidden">
+  <div class="modal-backdrop absolute inset-0 bg-[#1a0c26]/70 backdrop-blur-sm" onclick="closeGiveModal()"></div>
+  <div class="relative min-h-full flex items-center justify-center p-5">
+    <div class="soft-card w-full max-w-lg p-7 md:p-9 relative text-center">
+      <button onclick="closeGiveModal()" class="absolute right-4 top-4 p-2 rounded-full hover:bg-[#f3e9da]"><i data-lucide="x" class="w-4 h-4"></i></button>
+      <div class="font-display text-[32px] text-mfm-purple">Partner with Campus Missions</div>
+      <p class="text-[14.5px] text-[#57455b] mt-2">Your giving sponsors Bibles, outreaches, pioneer kits, and buses for national campus conferences.</p>
+      <div class="bg-[#fbf4e6] border border-[#e6cc98] rounded-[16px] px-4 py-4 mt-5 text-[13.5px] text-[#6b4a1d]">
+        <div class="font-[700]">MFMCAMPUSHQ — MFM Nigeria</div>
+        <div class="font-mono mt-1">Acc: 0123456789 • First Bank</div>
+        <div class="text-[12px] mt-1">For USD / International: partner@mfmcfhq.org</div>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <button onclick="showToast('Account number copied.', 'gold'); navigator.clipboard.writeText('0123456789')" class="flex-1 py-3 rounded-full border border-[#d6be9a] bg-white font-[700] text-[13px]">Copy Account</button>
+        <button onclick="showToast('Thank you for partnering with us!')" class="flex-1 py-3 rounded-full bg-mfm-purple text-white font-[700] text-[13px]">I just gave</button>
+      </div>
+      <div class="text-[11.5px] text-mfm-stone mt-3">2 Cor 9:7 — God loves a cheerful giver.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------- DATA ---------------- */
+const CAMPUSES = [
+  { id:'unilag', name:'MFMCF UNILAG', school:'University of Lagos', city:'Akoka, Lagos', state:'Lagos', zone:'South-West', members:620, img:'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=900&q=80', tag:'Flagship Lagos Campus' },
+  { id:'oau', name:'MFMCF OAU', school:'Obafemi Awolowo University', city:'Ile-Ife, Osun', state:'Osun', zone:'South-West', members:540, img:'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80', tag:'Great Ife Fire' },
+  { id:'ui', name:'MFMCF UI', school:'University of Ibadan', city:'Ibadan, Oyo', state:'Oyo', zone:'South-West', members:510, img:'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80' },
+  { id:'uniben', name:'MFMCF UNIBEN', school:'University of Benin', city:'Benin, Edo', state:'Edo', zone:'South-South', members:430, img:'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80' },
+  { id:'unn', name:'MFMCF UNN', school:'University of Nigeria, Nsukka', city:'Nsukka, Enugu', state:'Enugu', zone:'South-East', members:395, img:'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80' },
+  { id:'abu', name:'MFMCF ABU', school:'Ahmadu Bello University', city:'Zaria, Kaduna', state:'Kaduna', zone:'North-West', members:360, img:'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80' },
+  { id:'unilorin', name:'MFMCF UNILORIN', school:'University of Ilorin', city:'Ilorin, Kwara', state:'Kwara', zone:'North-Central', members:415, img:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80' },
+  { id:'unical', name:'MFMCF UNICAL', school:'University of Calabar', city:'Calabar, Cross River', state:'Cross River', zone:'South-South', members:280, img:'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80' },
+  { id:'unijos', name:'MFMCF UNIJOS', school:'University of Jos', city:'Jos, Plateau', state:'Plateau', zone:'North-Central', members:255, img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80' },
+  { id:'lasu', name:'MFMCF LASU', school:'Lagos State University', city:'Ojo, Lagos', state:'Lagos', zone:'South-West', members:310, img:'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80' },
+  { id:'futa', name:'MFMCF FUTA', school:'Federal University of Technology, Akure', city:'Akure, Ondo', state:'Ondo', zone:'South-West', members:265, img:'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80' },
+  { id:'uniabuja', name:'MFMCF UNIABUJA', school:'University of Abuja', city:'Gwagwalada, FCT', state:'FCT', zone:'North-Central', members:295, img:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80' },
+];
+
+const EVENTS_NATIONAL = [
+  { date:'FEB 14–16', title:'National Campus Prayer Rain', where:'Camp Ground • Lagos-Ibadan Expressway', tag:'Prayer' },
+  { date:'MAR 8', title:'CF Leaders Summit 2026', where:'MFM International HQ • Yaba', tag:'Leadership' },
+  { date:'APR 18–20', title:'Campus Evangelism Storm', where:'All 140 Campuses Nationwide', tag:'Evangelism' },
+];
+
+const TESTIMONIES = [
+  { name:'Deborah A., UNILAG - 300L', text:'“I joined MFMCF in 100 level broken. Three years later, I lead the intercessors team and my CGPA moved from 2.9 to 4.61. God still does miracles.”' },
+  { name:'Emmanuel K., OAU', text:'“At MFMCF OAU I found a real family. The prayer altar changed my life. Got my scholarship testimony after 21 days of campus prayer chain.”' },
+  { name:'Ruth O., UNIBEN', text:'“The Word here is fire and deep. I came as a visitor in 2024, today I coordinate 4 cells. Thank you MFMCF Nigeria.”' },
+  { name:'Samuel T., ABU', text:'“Northern campus, same fire. MFMCF ABU is home. God healed my mum during our campus Power Must Change Hands.”' },
+];
+
+let PRAYERS = [
+  { name:'Chiamaka • UNN', campus:'UNN', text:'Praying for my final year project defense this Friday. Let God crown my efforts.', amens: 24, time:'2m ago' },
+  { name:'Anonymous', campus:'OAU', text:'Please pray for my admission into medicine. I have written JAMB twice.', amens: 41, time:'5m ago' },
+  { name:'David • UNILAG', campus:'UNILAG', text:'Family financial breakthrough. God should remember my parents.', amens: 18, time:'9m ago' },
+  { name:'Grace • UNIBEN', campus:'UNIBEN', text:'Healing from a long battle with anemia. God of Elijah arise.', amens: 36, time:'14m ago' },
+];
+
+/* ---------------- INIT ---------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+
+  // Loader simulation
+  const loaderStatuses = [
+    'Mounting campus network…',
+    'Syncing 140 fellowships…',
+    'Loading Prayer Altar…',
+    'Almost ready…'
+  ];
+  let li = 0;
+  const loaderInterval = setInterval(()=>{
+    li++;
+    if(li < loaderStatuses.length) document.getElementById('loader-status').textContent = loaderStatuses[li];
+  }, 500);
+  setTimeout(()=>{
+    clearInterval(loaderInterval);
+    document.getElementById('app-loader').classList.add('hidden-loader');
+  }, 2100);
+
+  buildTicker();
+  renderCampusGrid(CAMPUSES);
+  renderEvents();
+  renderPrayers();
+  renderTestimony();
+  populateCampusSelects();
+  setupFilters();
+  setupJoinForms();
+  setupPrayerForm();
+  setupIntersectionObserver();
+  setupMobileMenu();
+  startLivePrayerSimulation();
+
+  // Route for campus pages
+  window.addEventListener('hashchange', handleRoute);
+  handleRoute();
+});
+
+function handleRoute(){
+  const hash = location.hash;
+  if(hash.startsWith('#campus/')){
+    const id = hash.split('/')[1];
+    openCampus(id, true);
+  }
+}
+
+/* ---------------- Ticker ---------------- */
+function buildTicker(){
+  const items = [
+    'ANNOUNCEMENT — National Campus Prayer Rain • Feb 14–16 • Camp Ground • Register free',
+    'SCRIPTURE — Jeremiah 1:7 — “Say not, I am a youth...”',
+    'SCRIPTURE — 1 Timothy 4:12 — Let no man despise thy youth',
+    'ANNOUNCEMENT — CF Leaders Summit • March 8 • MFM HQ Yaba • All campus presidents',
+    'SCRIPTURE — Psalm 119:9 — Wherewithal shall a young man cleanse his way?',
+    'ANNOUNCEMENT — New to MFMCF? Fill the Join Form • Coordinator will WhatsApp you in under 12 hours',
+    'SCRIPTURE — Ecclesiastes 12:1 — Remember now thy Creator in the days of thy youth',
+    'ANNOUNCEMENT — Pioneer a Campus Fellowship — Apply, launch in 14 days',
+  ];
+  const mk = () => items.map(t => `<span class="mx-7 flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#8a5718]"></span>${t}</span>`).join('');
+  document.getElementById('ticker-content').innerHTML = mk();
+  document.getElementById('ticker-content-clone').innerHTML = mk();
+}
+
+/* ---------------- Campus grid ---------------- */
+let campusShowCount = 8;
+function renderCampusGrid(list){
+  const grid = document.getElementById('campus-grid');
+  const slice = list.slice(0, campusShowCount);
+  grid.innerHTML = slice.map(c => `
+    <article class="campus-card soft-card overflow-hidden cursor-pointer group" onclick="openCampus('${c.id}')">
+      <div class="relative h-[190px] overflow-hidden bg-[#e9ddd0]">
+        <img src="${c.img}" alt="${c.name}" class="campus-card-img w-full h-full object-cover" loading="lazy" />
+        <div class="absolute top-3 left-3 bg-white/92 backdrop-blur px-2.5 py-1 rounded-full text-[11px] font-[700] text-[#60425f]">${c.zone}</div>
+        <div class="absolute bottom-3 left-3 text-white drop-shadow">
+          <div class="text-[11px] font-mono opacity-90">${c.city}</div>
+          <div class="font-display text-[22px] leading-tight">${c.name}</div>
+        </div>
+      </div>
+      <div class="px-4 py-3.5 flex items-center justify-between text-[13px]">
+        <span class="text-[#5a475e]">${c.school}</span>
+        <span class="text-mfm-purple font-[700]">View page ?</span>
+      </div>
+    </article>
+  `).join('');
+  document.getElementById('campus-count-note').textContent = `Showing ${Math.min(campusShowCount, list.length)} of ${list.length} campuses`;
+  lucide.createIcons();
+}
+
+document.getElementById('load-more-campuses')?.addEventListener('click', ()=>{
+  campusShowCount = CAMPUSES.length;
+  const searchVal = document.getElementById('campus-search').value.toLowerCase();
+  const zone = document.getElementById('campus-zone-filter').value;
+  const state = document.getElementById('campus-state-filter').value;
+  applyCampusFilters(searchVal, zone, state);
+  showToast('Loaded full national campus directory.', 'gold');
+});
+
+/* Filters */
+function setupFilters(){
+  const search = document.getElementById('campus-search');
+  const zone = document.getElementById('campus-zone-filter');
+  const state = document.getElementById('campus-state-filter');
+  [search, zone, state].forEach(el => el.addEventListener('input', ()=>{
+    applyCampusFilters(search.value.toLowerCase(), zone.value, state.value);
+  }));
+}
+function applyCampusFilters(q, zone, state){
+  let filtered = CAMPUSES.filter(c => 
+    (!q || (c.name + c.school + c.city + c.state).toLowerCase().includes(q)) &&
+    (!zone || c.zone === zone) &&
+    (!state || c.state === state)
+  );
+  renderCampusGrid(filtered);
+}
+function resetCampusFilters(){
+  document.getElementById('campus-search').value='';
+  document.getElementById('campus-zone-filter').value='';
+  document.getElementById('campus-state-filter').value='';
+  campusShowCount = 8;
+  renderCampusGrid(CAMPUSES);
+}
+
+/* ---------------- Events ---------------- */
+function renderEvents(){
+  const el = document.getElementById('events-grid');
+  el.innerHTML = EVENTS_NATIONAL.map(ev => `
+    <div class="soft-card p-6 bg-[#fffcf6]">
+      <div class="text-[11px] font-mono text-[#9a6a2c] tracking-wider">${ev.date} • ${ev.tag.toUpperCase()}</div>
+      <div class="font-display text-[24px] text-mfm-purple mt-2 leading-tight">${ev.title}</div>
+      <div class="text-[13.5px] text-[#5a475c] mt-1">${ev.where}</div>
+      <button onclick="showToast('Registration opening soon for: ${ev.title.replace(/'/g,"\\'")}')" class="mt-4 text-[13px] font-[700] text-mfm-purple hover:underline">Register free ?</button>
+    </div>
+  `).join('');
+}
+
+/* ---------------- Prayer Altar ---------------- */
+function renderPrayers(){
+  const feed = document.getElementById('prayer-feed');
+  feed.innerHTML = PRAYERS.map((p, i) => prayerHTML(p, i)).join('');
+  document.getElementById('prayer-count-label').textContent = `${82 + PRAYERS.length} prayers today`;
+  lucide.createIcons();
+}
+function prayerHTML(p, idx){
+  return `<div class="prayer-item bg-white/[.055] border border-white/[.09] rounded-[16px] px-4 py-3">
+    <div class="flex items-center justify-between text-[11.5px] text-[#c6a7d0] font-mono">
+      <span>${p.name} • ${p.campus}</span>
+      <span>${p.time}</span>
+    </div>
+    <div class="text-[14.8px] leading-relaxed text-[#f1e1f7] mt-1.5">${escapeHtml(p.text)}</div>
+    <div class="flex items-center gap-4 mt-2 text-[12.5px] text-[#ddbfe8]">
+      <button onclick="amenPrayer(${idx})" class="hover:text-[#f7d48c] flex items-center gap-1.5"><i data-lucide="flame" class="w-3.5 h-3.5"></i> Prayed • ${p.amens}</button>
+      <button onclick="showToast('Joined prayer chain for this request.')" class="hover:text-[#f7d48c]">Join chain</button>
+      <button onclick="showToast('Shared to WhatsApp prayer group.')" class="hover:text-[#f7d48c]">Share</button>
+    </div>
+  </div>`;
+}
+function amenPrayer(idx){
+  if(PRAYERS[idx]) { PRAYERS[idx].amens++; renderPrayers(); }
+}
+function setupPrayerForm(){
+  document.getElementById('prayer-form').addEventListener('submit', e=>{
+    e.preventDefault();
+    const text = document.getElementById('prayer-input').value.trim();
+    if(!text) return;
+    const nameInput = document.getElementById('prayer-name').value.trim() || 'Anonymous';
+    const campus = document.getElementById('prayer-campus').value || 'National';
+    const anon = document.getElementById('prayer-anon').checked;
+    const entry = { name: anon ? 'Anonymous' : nameInput, campus, text, amens: 0, time: 'now' };
+    PRAYERS.unshift(entry);
+    renderPrayers();
+    const first = document.querySelector('#prayer-feed .prayer-item');
+    if(first) first.classList.add('prayer-item-new');
+    e.target.reset();
+    showToast('Your prayer is live on the National Altar. We are praying with you.', 'gold');
+    bumpLiveCount(3);
+  });
+}
+let livePraying = 1842;
+function bumpLiveCount(n=1){
+  livePraying += n;
+  document.getElementById('praying-live-count').textContent = livePraying.toLocaleString();
+}
+function startLivePrayerSimulation(){
+  const samplePeople = [
+    ['Tomiwa • UI','UI','Please pray for my mum’s surgery tomorrow.'],
+    ['Anonymous','UNICAL','Financial open doors. Tuition fees.'],
+    ['Favour • LASU','LASU','God should help me overcome addiction.'],
+    ['Joshua • FUTA','FUTA','Academic excellence, first class in Jesus name.'],
+    ['Precious • UNIJOS','UNIJOS','Protection over Plateau. Peace in my campus.'],
+    ['Ife • OAU','OAU','Marital settlement for my elder sister.'],
+  ];
+  setInterval(()=>{
+    if(Math.random() < 0.62){
+      const sp = samplePeople[Math.floor(Math.random()*samplePeople.length)];
+      PRAYERS.unshift({ name: sp[0], campus: sp[1], text: sp[2], amens: Math.floor(Math.random()*7), time:'now' });
+      if(PRAYERS.length > 30) PRAYERS.pop();
+      renderPrayers();
+      bumpLiveCount(Math.floor(Math.random()*3)+1);
+    } else {
+      bumpLiveCount(1);
+    }
+  }, 8200);
+}
+
+/* ---------------- Testimonies ---------------- */
+let testimonyIdx = 0;
+function renderTestimony(){
+  const t = TESTIMONIES[testimonyIdx];
+  document.getElementById('testimony-card').innerHTML = `
+    <div class="text-[18.5px] leading-relaxed text-[#3d2c41]">${t.text}</div>
+    <div class="mt-5 text-[13px] font-[700] text-mfm-purple">${t.name}</div>
+    <div class="absolute right-5 bottom-4 text-[11px] font-mono text-mfm-stone">${testimonyIdx+1} / ${TESTIMONIES.length}</div>
+  `;
+}
+function nextTestimony(){ testimonyIdx = (testimonyIdx+1) % TESTIMONIES.length; renderTestimony(); }
+function prevTestimony(){ testimonyIdx = (testimonyIdx-1+TESTIMONIES.length) % TESTIMONIES.length; renderTestimony(); }
+setInterval(nextTestimony, 7000);
+
+/* ---------------- Campus Page ---------------- */
+let currentCampusId = 'unilag';
+function openCampus(id, fromRoute=false){
+  const c = CAMPUSES.find(x=>x.id===id) || CAMPUSES[0];
+  currentCampusId = c.id;
+  if(!fromRoute){ location.hash = '#campus/'+c.id; }
+  document.getElementById('view-national').classList.add('hidden');
+  document.getElementById('view-campus').classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'instant'});
+
+  document.getElementById('campus-hub-name').textContent = c.name;
+  document.getElementById('campus-hub-tag').textContent = `${c.school} • ${c.city}`;
+  document.getElementById('campus-hub-zone').textContent = `${c.zone.toUpperCase()} • ${c.state.toUpperCase()} STATE`;
+  document.getElementById('campus-about-short').textContent = c.name.split(' ')[1] || c.school;
+  document.getElementById('campus-about-text').textContent = `We are a vibrant campus fellowship raising fire-brand students at ${c.school}. Word, Prayer, Holiness. Weekly power-packed services, departmental cell fellowships, and campus-wide evangelism.`;
+  document.getElementById('campus-hero-img').src = c.img;
+  document.getElementById('campus-members-count').textContent = `~${c.members} active members`;
+  document.getElementById('campus-join-code').textContent = c.id.toUpperCase();
+
+  // Schedule
+  const schedule = [
+    ['Sunday Service','8:00 AM — 11:00 AM','Main Fellowship'],
+    ['Bible Study','Wed 5:30 PM — 7:00 PM','Word Depth'],
+    ['Prayer Rain','Fri 5:00 PM — 7:30 PM','Power Night'],
+    ['Workers Meeting','Sat 4:00 PM','Executives & Volunteers'],
+    ['Evangelism','Sat 9:00 AM','Campus Storm'],
+  ];
+  document.getElementById('campus-schedule-body').innerHTML = schedule.map(s=> `
+    <tr><td class="py-3 pr-4 font-[700] whitespace-nowrap">${s[0]}</td><td class="py-3 pr-4 text-[#5a455d]">${s[1]}</td><td class="py-3 text-[#78637c]">${s[2]}</td></tr>
+  `).join('');
+
+  document.getElementById('campus-venue-text').innerHTML = `<strong>Venue:</strong> MFMCF Chapel, ${c.school}, ${c.city}. <a href="#" onclick="showToast('Opening Google Maps'); return false;" class="text-mfm-purple font-[700] underline">Open in Maps ?</a>`;
+
+  document.getElementById('campus-announcements').innerHTML = `
+    <li>• Sunday First-timers reception — arrive 7:30AM, Welcome team waiting.</li>
+    <li>• Prayer Rain this Friday — “My Star Must Shine”</li>
+    <li>• Cell fellowship registration closes Wednesday.</li>
+    <li>• Campus Evangelism Storm — this Saturday 9AM.</li>
+  `;
+  document.getElementById('campus-events').innerHTML = `
+    <li><strong>Feb 14–16</strong> — National Campus Prayer Rain</li>
+    <li><strong>Mar 8</strong> — CF Leaders Summit</li>
+    <li><strong>Every Friday</strong> — Power Night</li>
+  `;
+
+  document.getElementById('campus-leadership').innerHTML = `
+    <div><div class="text-[11px] font-mono text-mfm-stone">CAMPUS COORDINATOR</div><div class="font-[700]">Bro. ${['Daniel','Joshua','Emmanuel','Samuel'][Math.floor(Math.random()*4)]} A.</div><div class="text-mfm-stone">President, ${c.name}</div></div>
+    <div><div class="text-[11px] font-mono text-mfm-stone">ASST. COORDINATOR</div><div class="font-[700]">Sis. Grace O.</div></div>
+    <div><div class="text-[11px] font-mono text-mfm-stone">STATE COORDINATOR</div><div class="font-[700]">Pastor ${c.state} State CF Pastor</div></div>
+    <div><div class="text-[11px] font-mono text-mfm-stone">ZONAL / REGIONAL</div><div class="font-[700]">${c.zone} Zonal Coordinator</div></div>
+    <div><div class="text-[11px] font-mono text-mfm-stone">VOLUNTEER LEAD</div><div class="font-[700]">Prayer • Media • Welfare • Music</div></div>
+  `;
+
+  document.getElementById('campus-contact-info').innerHTML = `
+    <div><strong>Phone / WhatsApp:</strong> +234 80X XXX ${Math.floor(1000+Math.random()*8999)}</div>
+    <div><strong>Email:</strong> ${c.id}@mfmcfhq.org</div>
+    <div><strong>Instagram:</strong> @mfmcf_${c.id}</div>
+    <div><strong>Address:</strong> MFMCF Chapel, ${c.school}, ${c.city}</div>
+  `;
+
+  const galImgs = [
+    c.img,
+    'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=600&q=80'
+  ];
+  document.getElementById('campus-gallery').innerHTML = galImgs.map(src=> `<img src="${src}" class="w-full h-[110px] md:h-[118px] object-cover rounded-[12px]" loading="lazy" alt="Fellowship" />`).join('');
+  document.getElementById('campus-map-box').innerHTML = `${c.school}<br/>${c.city}<br/><span class="font-mono text-[11px]">Fellowship Chapel</span>`;
+
+  showToast(`${c.name} campus page opened.`, 'gold');
+  lucide.createIcons();
+}
+function closeCampus(){
+  document.getElementById('view-campus').classList.add('hidden');
+  document.getElementById('view-national').classList.remove('hidden');
+  history.replaceState(null, '', location.pathname + location.search + '#campuses');
+  window.scrollTo({top: document.getElementById('campuses').offsetTop - 70, behavior:'smooth'});
+}
+
+/* ---------------- Join forms ---------------- */
+function populateCampusSelects(){
+  const opts = '<option value="">Select your campus</option>' + CAMPUSES.map(c=>`<option value="${c.id}">${c.school} — ${c.city}</option>`).join('');
+  const s1 = document.getElementById('join-campus-select');
+  const s2 = document.getElementById('join-modal-campus-select');
+  const s3 = document.getElementById('prayer-campus');
+  if(s1) s1.innerHTML = opts;
+  if(s2) s2.innerHTML = opts;
+  if(s3) s3.innerHTML = '<option value="">Select campus</option>' + CAMPUSES.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
+}
+function setupJoinForms(){
+  const handler = (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const campus = fd.get('campus') || currentCampusId;
+    const first = fd.get('firstName') || fd.get('fullName')?.split(' ')[0] || 'Friend';
+    e.target.reset();
+    closeJoinModal();
+    showToast(`Thanks ${first}! Your ${getCampusLabel(campus)} coordinator will WhatsApp you within 12 hours.`, 'gold');
+  };
+  document.getElementById('join-form')?.addEventListener('submit', handler);
+  document.getElementById('join-modal-form')?.addEventListener('submit', handler);
+  document.getElementById('pioneer-form')?.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    closePioneerModal();
+    showToast(`Pioneer application received for ${fd.get('school')}. State coordinator will call within 48 hrs.`, 'gold');
+    e.target.reset();
+  });
+}
+function getCampusLabel(id){
+  const c = CAMPUSES.find(x=>x.id===id);
+  return c ? c.name : 'campus';
+}
+
+/* ---------------- Modals ---------------- */
+function openJoinModal(){ document.getElementById('join-modal').classList.remove('hidden'); }
+function closeJoinModal(){ document.getElementById('join-modal').classList.add('hidden'); }
+function openPioneerModal(){ document.getElementById('pioneer-modal').classList.remove('hidden'); }
+function closePioneerModal(){ document.getElementById('pioneer-modal').classList.add('hidden'); }
+function openGiveModal(){ document.getElementById('give-modal').classList.remove('hidden'); }
+function closeGiveModal(){ document.getElementById('give-modal').classList.add('hidden'); }
+
+/* ---------------- Misc UI ---------------- */
+
+function openModal(id) {
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('hidden');
+  // Trigger animation next frame
+  requestAnimationFrame(() => {
+    el.classList.add('modal-open');
+  });
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('modal-open');
+  setTimeout(() => {
+    el.classList.add('hidden');
+    document.body.style.overflow = '';
+  }, 400); // Wait for transition
+}
+
+// Override existing close functions to use the new animated close
+function openJoinModal() { openModal('join-modal'); }
+function closeJoinModal() { closeModal('join-modal'); }
+function openPioneerModal() { openModal('pioneer-modal'); }
+function closePioneerModal() { closeModal('pioneer-modal'); }
+function openGiveModal() { openModal('give-modal'); }
+function closeGiveModal() { closeModal('give-modal'); }
+
+function showToast(msg, tone='dark'){
+  const c = document.getElementById('toast-container');
+  const el = document.createElement('div');
+  el.className = 'toast' + (tone==='gold' ? ' gold' : '');
+  el.innerHTML = `<i data-lucide="${tone==='gold' ? 'sparkles' : 'check-circle'}" class="w-4 h-4 opacity-90"></i><span>${msg}</span>`;
+  c.appendChild(el);
+  lucide.createIcons({nodes:[el]});
+  setTimeout(()=>{ el.style.opacity='0'; el.style.transform='translateY(6px)'; setTimeout(()=>el.remove(), 280); }, 3800);
+}
+
+// Additional handlers
+async function handleVolunteer(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.classList.add('btn-loading');
+  await new Promise(r => setTimeout(r, 1200));
+  btn.classList.remove('btn-loading');
+  closeModal('volunteer-modal');
+  e.target.reset();
+  showToast("Application submitted successfully! We'll be in touch.", "gold");
+}
+
+async function handleLeadersLogin(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.classList.add('btn-loading', 'btn-loading-dark');
+  await new Promise(r => setTimeout(r, 1500));
+  btn.classList.remove('btn-loading', 'btn-loading-dark');
+  closeModal('leaders-modal');
+  e.target.reset();
+  showToast("Invalid credentials. Portal access denied.", "dark");
+}
+
+function playSermon(el) {
+  const icon = el.querySelector('i');
+  if(icon.getAttribute('data-lucide') === 'play') {
+    icon.setAttribute('data-lucide', 'pause');
+    showToast("Buffering sermon audio...");
+  } else {
+    icon.setAttribute('data-lucide', 'play');
+  }
+  lucide.createIcons({nodes:[el]});
+}
+
+let isRadioPlaying = false;
+function toggleRadioPlay() {
+  isRadioPlaying = !isRadioPlaying;
+  const icon = document.getElementById('radio-icon');
+  icon.setAttribute('data-lucide', isRadioPlaying ? 'pause' : 'play');
+  lucide.createIcons();
+  if (isRadioPlaying) {
+    showToast("Connecting to live stream...", "gold");
+  }
+}
+
+// Enhance existing form submissions to show loading
+function setupPremiumForms() {
+  document.querySelectorAll('form').forEach(f => {
+    if (f.id === 'volunteer-form' || f.id === 'leaders-form') return; // Handled separately
+    const oldSubmit = f.onsubmit;
+    f.addEventListener('submit', async (e) => {
+      // It's handled by existing event listeners in setupJoinForms
+    });
+  });
+}
+
+/* Replaced original showToast logic above */
+
+  const c = document.getElementById('toast-container');
+  const el = document.createElement('div');
+  el.className = 'toast' + (tone==='gold' ? ' gold' : '');
+  el.innerHTML = `<i data-lucide="${tone==='gold' ? 'sparkles' : 'check-circle'}" class="w-4 h-4 opacity-90"></i><span>${msg}</span>`;
+  c.appendChild(el);
+  lucide.createIcons({nodes:[el]});
+  setTimeout(()=>{ el.style.opacity='0'; el.style.transform='translateY(6px)'; setTimeout(()=>el.remove(), 280); }, 3800);
+}
+function setupIntersectionObserver(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+function setupMobileMenu(){
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', ()=> menu.classList.toggle('hidden'));
+  document.querySelectorAll('.mobile-nav-link').forEach(a=>{
+    a.addEventListener('click', closeMobileMenu);
+  });
+}
+function closeMobileMenu(){ document.getElementById('mobile-menu').classList.add('hidden'); }
+function handleCampusWhatsApp(){
+  const c = CAMPUSES.find(x=>x.id===currentCampusId) || CAMPUSES[0];
+  showToast(`Opening WhatsApp chat with ${c.name} Coordinator…`, 'gold');
+  setTimeout(()=> window.open('https://wa.me/2348000000000?text=Hello%20MFMCF%20'+encodeURIComponent(c.name)+'%20I%20am%20new%20here', '_blank'), 600);
+}
+function escapeHtml(s){ return s.replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+/* Close modals with ESC */
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ closeJoinModal(); closePioneerModal(); closeGiveModal(); }
+});
+</script>
+</body>
+</html>
