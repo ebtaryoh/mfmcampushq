@@ -91,20 +91,20 @@ export default function Hero({ openModal }) {
         </FadeUp>
 
         {/* Trust/Stats Footer */}
-        <FadeUp delay={0.8} className="mt-20 flex flex-wrap justify-center items-center gap-8 md:gap-16 border-t border-white/10 pt-10">
+        <FadeUp delay={0.8} className="mt-20 flex flex-wrap justify-center items-center gap-8 md:gap-16 border-t border-white/20 pt-10">
           <div className="text-center">
-            <p className="font-display text-4xl text-mfm-gold mb-1 shadow-black drop-shadow-md">140+</p>
-            <p className="text-[10px] font-mono text-white/60 tracking-widest uppercase">Campuses</p>
+            <p className="font-display text-4xl text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">140+</p>
+            <p className="text-[10px] font-mono text-white/80 tracking-widest uppercase drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">Campuses</p>
           </div>
-          <div className="hidden sm:block w-px h-10 bg-white/10"></div>
+          <div className="hidden sm:block w-px h-10 bg-white/20"></div>
           <div className="text-center">
-            <p className="font-display text-4xl text-mfm-gold mb-1 shadow-black drop-shadow-md">28k+</p>
-            <p className="text-[10px] font-mono text-white/60 tracking-widest uppercase">Students</p>
+            <p className="font-display text-4xl text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">28k+</p>
+            <p className="text-[10px] font-mono text-white/80 tracking-widest uppercase drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">Students</p>
           </div>
-          <div className="hidden sm:block w-px h-10 bg-white/10"></div>
+          <div className="hidden sm:block w-px h-10 bg-white/20"></div>
           <div className="text-center">
-            <p className="font-display text-4xl text-mfm-gold mb-1 shadow-black drop-shadow-md">36</p>
-            <p className="text-[10px] font-mono text-white/60 tracking-widest uppercase">States + FCT</p>
+            <p className="font-display text-4xl text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">36</p>
+            <p className="text-[10px] font-mono text-white/80 tracking-widest uppercase drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">States + FCT</p>
           </div>
         </FadeUp>
 

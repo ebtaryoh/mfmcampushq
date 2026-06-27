@@ -287,6 +287,71 @@ export default function CampusPage({ openModal }) {
           </FadeUp>
         </div>
 
+        {/* Full-width Next Event Section */}
+        <div className="mb-6">
+          <FadeUp delay={0.1}>
+            <div className="bg-gradient-to-br from-[#1a0f26] to-[#2a0e20] rounded-[32px] p-8 md:p-12 shadow-[0_20px_60px_rgba(42,14,32,0.3)] border border-mfm-gold/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-mfm-gold/5 blur-[120px] rounded-full pointer-events-none" />
+              <h2 className="font-display text-3xl text-mfm-gold mb-2 flex items-center gap-3">
+                Next Event
+                <span className="flex h-3 w-3 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mfm-gold opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-mfm-gold" />
+                </span>
+              </h2>
+              <p className="text-white/60 text-sm mb-8">Don't miss our upcoming power-packed service. Share this with a friend!</p>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
+                {/* Left: Video Advert */}
+                <div className="flex flex-col gap-4">
+                  <p className="text-white/50 font-mono text-[10px] tracking-widest uppercase mb-2">Event Promo</p>
+                  <div className="rounded-[20px] overflow-hidden aspect-video bg-black border border-white/10 shadow-2xl">
+                    {campus.promoVideo ? (
+                      <video
+                        src={campus.promoVideo}
+                        autoPlay
+                        muted
+                        loop
+                        controls
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+                        <div className="w-16 h-16 rounded-full bg-mfm-gold/20 border border-mfm-gold/30 flex items-center justify-center">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d7a84a" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </div>
+                        <p className="text-white/40 font-mono text-xs tracking-widest">PROMO VIDEO COMING SOON</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right: Flyer + Download */}
+                <div className="flex flex-col gap-4">
+                  <p className="text-white/50 font-mono text-[10px] tracking-widest uppercase mb-2">Event Flyer</p>
+                  <div className="rounded-[20px] overflow-hidden relative border border-white/10 shadow-2xl group flex-1">
+                    <img
+                      src={campus.upcomingEventImg}
+                      alt="Next Event Flyer"
+                      className="w-full h-full object-cover max-h-[320px] group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <a
+                        href={campus.upcomingEventImg}
+                        download
+                        className="block text-center bg-mfm-gold text-[#1a0f26] font-bold py-3 px-6 rounded-xl hover:bg-[#d8a43f] transition-colors shadow-lg"
+                      >
+                        ⬇ Download Flyer
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+
         <div className="grid lg:grid-cols-3 gap-6">
           
           {/* LEFT COLUMN (Spans 2) */}
@@ -463,30 +528,7 @@ export default function CampusPage({ openModal }) {
           {/* RIGHT COLUMN (Sidebar) */}
           <div className="lg:col-span-1 space-y-6">
             
-            {/* Next Event Flyer */}
-            <ScaleIn delay={0.2}>
-              <div className="bg-gradient-to-br from-[#1a0f26] to-[#2a0e20] rounded-[32px] p-1 shadow-[0_20px_60px_rgba(42,14,32,0.3)] border border-mfm-gold/30 group relative overflow-hidden">
-                <div className="absolute inset-0 bg-mfm-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="bg-white/5 backdrop-blur-xl rounded-[28px] p-8 relative z-10 h-full">
-                  <h2 className="font-display text-3xl text-mfm-gold mb-3 flex items-center justify-between">
-                    Next Event
-                    <span className="flex h-3 w-3 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mfm-gold opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-mfm-gold"></span>
-                    </span>
-                  </h2>
-                  <p className="text-white/70 text-sm mb-6">Don't miss our upcoming power-packed service. Share this with a friend!</p>
-                  <div className="rounded-[20px] overflow-hidden aspect-[4/5] relative border border-white/10 group-hover:border-mfm-gold/40 transition-colors shadow-2xl">
-                    <img src={campus.upcomingEventImg} alt="Next Event Flyer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                       <a href={campus.upcomingEventImg} download className="block text-center bg-white text-mfm-purple-dark font-bold py-4 px-4 rounded-xl hover:bg-mfm-gold transition-colors shadow-lg">
-                         Download Flyer
-                       </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScaleIn>
+
 
             {/* Campus Leadership */}
             <FadeUp delay={0.3}>
