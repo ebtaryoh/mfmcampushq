@@ -54,7 +54,7 @@ export default function Testimonies() {
                 </div>
                 <div className="bg-[#f9f5ef] dark:bg-white/5 p-6 rounded-3xl border border-mfm-stone/10 dark:border-white/10">
                   <p className="text-xs font-mono text-mfm-stone dark:text-mfm-stone/70 mb-2">ASST. NATIONAL</p>
-                  <p className="font-bold text-mfm-ink dark:text-white mb-1">Pastor Paul</p>
+                  <p className="font-bold text-mfm-ink dark:text-white mb-1">Pastor Paul Adeniyi</p>
                   <p className="text-mfm-stone text-sm">Asst. National Coordinator</p>
                 </div>
                 <div className="bg-[#f9f5ef] dark:bg-white/5 p-6 rounded-3xl border border-mfm-stone/10 dark:border-white/10">
