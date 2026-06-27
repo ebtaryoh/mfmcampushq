@@ -27,22 +27,22 @@ function useCountdown(targetMs) {
 }
 
 const Digit = ({ value, label }) => (
-  <div className="flex flex-col items-center gap-3">
-    <div className="relative w-20 h-24 md:w-28 md:h-32 lg:w-36 lg:h-40">
-      <div className="absolute inset-0 bg-[#1a0f26] rounded-[20px] border border-mfm-gold/20 shadow-[0_0_30px_rgba(215,168,74,0.15)] flex items-center justify-center overflow-hidden">
+  <div className="flex flex-col items-center gap-2">
+    <div className="relative w-16 h-20 sm:w-20 sm:h-24 md:w-28 md:h-32 lg:w-36 lg:h-40">
+      <div className="absolute inset-0 bg-[#1a0f26] rounded-[16px] md:rounded-[20px] border border-mfm-gold/20 shadow-[0_0_30px_rgba(215,168,74,0.15)] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent" />
         <motion.span
           key={value}
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="font-display text-4xl md:text-5xl lg:text-6xl text-mfm-gold relative z-10"
+          className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-mfm-gold relative z-10"
         >
           {String(value).padStart(2, '0')}
         </motion.span>
       </div>
     </div>
-    <span className="text-white/50 font-mono text-[10px] tracking-[0.2em] uppercase">{label}</span>
+    <span className="text-white/50 font-mono text-[9px] sm:text-[10px] tracking-[0.2em] uppercase">{label}</span>
   </div>
 );
 
@@ -104,28 +104,28 @@ export default function NextEventSection() {
 
               {/* Countdown */}
               <FadeUp delay={0.2}>
-                <div className="flex gap-4 md:gap-6 lg:gap-8 mb-12">
+                <div className="flex gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-10 md:mb-12">
                   <Digit value={t.days} label="Days" />
-                  <div className="text-mfm-gold font-display text-3xl md:text-4xl self-start mt-6 md:mt-10">:</div>
+                  <div className="text-mfm-gold font-display text-2xl sm:text-3xl md:text-4xl self-start mt-4 sm:mt-6 md:mt-10">:</div>
                   <Digit value={t.hours} label="Hours" />
-                  <div className="text-mfm-gold font-display text-3xl md:text-4xl self-start mt-6 md:mt-10">:</div>
-                  <Digit value={t.minutes} label="Minutes" />
-                  <div className="text-mfm-gold font-display text-3xl md:text-4xl self-start mt-6 md:mt-10">:</div>
-                  <Digit value={t.seconds} label="Seconds" />
+                  <div className="text-mfm-gold font-display text-2xl sm:text-3xl md:text-4xl self-start mt-4 sm:mt-6 md:mt-10">:</div>
+                  <Digit value={t.minutes} label="Mins" />
+                  <div className="text-mfm-gold font-display text-2xl sm:text-3xl md:text-4xl self-start mt-4 sm:mt-6 md:mt-10">:</div>
+                  <Digit value={t.seconds} label="Secs" />
                 </div>
               </FadeUp>
 
               <FadeUp delay={0.3}>
-                <div className="flex flex-col sm:flex-row items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                   <Link
                     to="/events"
-                    className="group bg-mfm-gold hover:bg-[#d8a43f] text-[#1a0f26] px-10 py-4 rounded-full font-bold transition-all duration-300 flex items-center gap-3 shadow-[0_0_30px_rgba(215,168,74,0.3)] hover:shadow-[0_0_40px_rgba(215,168,74,0.5)] hover:scale-105"
+                    className="group bg-mfm-gold hover:bg-[#d8a43f] text-[#1a0f26] px-8 py-4 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(215,168,74,0.3)] hover:shadow-[0_0_40px_rgba(215,168,74,0.5)] hover:scale-105 text-center"
                   >
                     View All Events <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     to="/events"
-                    className="border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all backdrop-blur-sm"
+                    className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all backdrop-blur-sm text-center"
                   >
                     Register Now
                   </Link>

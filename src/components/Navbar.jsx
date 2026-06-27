@@ -66,7 +66,7 @@ export default function Navbar({ openModal }) {
           
           <Link to="/" className="flex items-center gap-3 relative z-50">
             <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/src/assets/logo.webp" alt="MFMCF Logo" className="w-full h-full object-contain" />
+              <img src="/logo.webp" alt="MFMCF Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <span className={`font-display font-bold text-xl tracking-tight leading-none block ${scrolled ? 'text-mfm-purple-dark dark:text-mfm-cream' : 'text-mfm-purple-dark dark:text-mfm-cream'}`}>MFMCAMPUSHQ</span>

@@ -19,7 +19,7 @@ export default function Preloader() {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="w-32 h-32 flex items-center justify-center mb-6 relative overflow-hidden">
-          <img src="/src/assets/logo.webp" alt="MFMCF Logo" className="w-full h-full object-contain relative z-10" />
+          <img src="/logo.webp" alt="MFMCF Logo" className="w-full h-full object-contain relative z-10" />
           <motion.div 
             className="absolute inset-0 rounded-full border border-mfm-purple-light/20"
             animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}

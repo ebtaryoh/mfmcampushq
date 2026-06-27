@@ -1,4 +1,4 @@
-import { MessageCircle, Flame } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="lg:col-span-2 pr-8">
             <Link to="/" className="flex items-center gap-3 mb-6 group">
               <div className="w-12 h-12 flex items-center justify-center">
-                <img src="/src/assets/logo.webp" alt="MFMCAMPUSHQ Logo" className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+                <img src="/logo.webp" alt="MFMCAMPUSHQ Logo" className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
               </div>
               <div>
                 <span className="font-display font-bold text-xl tracking-tight text-[#f3eedd] leading-none block group-hover:text-mfm-gold transition-colors">MFMCAMPUSHQ</span>

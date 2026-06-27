@@ -25,7 +25,7 @@ export default function GOAwardSection() {
 
           {/* Left: Image Mosaic */}
           <ScaleIn delay={0.1}>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-3 order-2 lg:order-1">
               {/* Large image top-left spanning 2 cols */}
               <div className="col-span-2 row-span-2 rounded-[24px] overflow-hidden aspect-square relative group shadow-xl">
                 <img src={AWARD_IMAGES[0]} alt="GO Award" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -41,7 +41,7 @@ export default function GOAwardSection() {
           </ScaleIn>
 
           {/* Right: Text */}
-          <div>
+          <div className="order-1 lg:order-2">
             <FadeUp>
               <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-mfm-gold/40 bg-mfm-gold/10 text-mfm-gold font-mono text-xs tracking-widest uppercase mb-8">
                 <Award size={14} /> G.O First Class Award
