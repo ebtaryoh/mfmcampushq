@@ -43,7 +43,7 @@ export default function About() {
                     <Target className="text-mfm-gold" size={24} />
                   </div>
                   <p className="text-mfm-purple-dark dark:text-white font-display text-xl mb-2">Our Mission</p>
-                  <p className="text-mfm-stone dark:text-white text-sm leading-relaxed">To propagate the gospel and raise spiritual giants on campuses.</p>
+                  <p className="text-mfm-stone dark:text-mfm-stone/80 text-sm leading-relaxed">To propagate the gospel and raise spiritual giants on campuses.</p>
                 </div>
                 
                 <div className="bg-white dark:bg-white/5 px-8 py-6 rounded-[24px] border border-mfm-stone/10 dark:border-white/10 shadow-sm hover:shadow-md transition-all group backdrop-blur-sm">
