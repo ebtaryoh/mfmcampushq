@@ -1,81 +1,539 @@
 export const CAMPUSES = [
-  { 
-    id: 'unilag', 
-    name: 'MFMCF UNILAG', 
-    university: 'University of Lagos', 
-    location: 'Akoka, Lagos', 
-    zone: 'South-West', 
-    img: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80',
-    stats: { members: '1,200+', subgroups: 8, founded: 1998 },
-    schedule: [
-      { day: 'Sunday', time: '8:00 AM', event: 'Campus Fire Service', loc: 'Main Auditorium' },
-      { day: 'Wednesday', time: '5:00 PM', event: 'Bible Study', loc: 'ETF Building' },
-      { day: 'Friday', time: '10:00 PM', event: 'Night Vigil', loc: 'Sports Centre' }
-    ]
+  {
+    "id": "unilag",
+    "name": "MFMCF UNILAG",
+    "university": "University of Lagos",
+    "location": "Akoka, Lagos",
+    "zone": "South-West",
+    "slogan": "Igniting the Akoka Campus with the Fire of the Holy Ghost",
+    "stats": {
+      "members": "1,200+",
+      "subgroups": 8,
+      "founded": 1998
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "8:00 AM",
+        "event": "Campus Fire Service",
+        "loc": "Main Auditorium",
+        "img": "/images/campuses/UNILAG/file-1-3.jpg"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM",
+        "event": "Bible Study",
+        "loc": "ETF Building",
+        "img": "/images/campuses/UNILAG/file-1-4.jpg"
+      },
+      {
+        "day": "Friday",
+        "time": "10:00 PM",
+        "event": "Night Vigil",
+        "loc": "Sports Centre",
+        "img": "/images/campuses/UNILAG/file-1.jpg"
+      }
+    ],
+    "img": "/images/campuses/UNILAG/file-1-2.jpg",
+    "gallery": [
+      "/images/campuses/UNILAG/file-1-3.jpg",
+      "/images/campuses/UNILAG/file-1-4.jpg",
+      "/images/campuses/UNILAG/file-1.jpg",
+      "/images/campuses/UNILAG/file-1.webp",
+      "/images/campuses/UNILAG/file-2-2.jpg",
+      "/images/campuses/UNILAG/file-2-3.jpg",
+      "/images/campuses/UNILAG/file-2-4.jpg",
+      "/images/campuses/UNILAG/file-2.jpg",
+      "/images/campuses/UNILAG/file-2.webp",
+      "/images/campuses/UNILAG/file-3-2.jpg",
+      "/images/campuses/UNILAG/file-3-3.jpg",
+      "/images/campuses/UNILAG/file-3-4.jpg",
+      "/images/campuses/UNILAG/file-3.jpg",
+      "/images/campuses/UNILAG/file-3.webp",
+      "/images/campuses/UNILAG/file-4-2.jpg",
+      "/images/campuses/UNILAG/file-4-3.jpg",
+      "/images/campuses/UNILAG/file-4-4.jpg",
+      "/images/campuses/UNILAG/file-4.jpg",
+      "/images/campuses/UNILAG/file-4.webp",
+      "/images/campuses/UNILAG/file-5-2.jpg",
+      "/images/campuses/UNILAG/file-5-3.jpg",
+      "/images/campuses/UNILAG/file-5.jpg",
+      "/images/campuses/UNILAG/file-5.webp",
+      "/images/campuses/UNILAG/file-6.jpg"
+    ],
+    "upcomingEventImg": "/images/campuses/UNILAG/file-6.jpg"
   },
-  { 
-    id: 'oau', 
-    name: 'MFMCF OAU', 
-    university: 'Obafemi Awolowo University', 
-    location: 'Ile-Ife, Osun', 
-    zone: 'South-West', 
-    img: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80',
-    stats: { members: '1,800+', subgroups: 12, founded: 1995 },
-    schedule: [
-      { day: 'Sunday', time: '7:30 AM', event: 'Worship Service', loc: 'Oduduwa Hall' },
-      { day: 'Thursday', time: '5:30 PM', event: 'Prayer Rain', loc: 'Amphi Theatre' }
-    ]
+  {
+    "id": "oau",
+    "name": "MFMCF OAU",
+    "university": "Obafemi Awolowo University",
+    "location": "Ile-Ife, Osun",
+    "zone": "South-West",
+    "slogan": "Great Ife for Christ",
+    "stats": {
+      "members": "1,800+",
+      "subgroups": 12,
+      "founded": 1995
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "7:30 AM",
+        "event": "Worship Service",
+        "loc": "Oduduwa Hall",
+        "img": "/images/campuses/OAU/file-1-3.webp"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:30 PM",
+        "event": "Prayer Rain",
+        "loc": "Amphi Theatre",
+        "img": "/images/campuses/OAU/file-1-4.webp"
+      }
+    ],
+    "img": "/images/campuses/OAU/file-1-2.webp",
+    "gallery": [
+      "/images/campuses/OAU/file-1-3.webp",
+      "/images/campuses/OAU/file-1-4.webp",
+      "/images/campuses/OAU/file-1-5.webp",
+      "/images/campuses/OAU/file-1.webp",
+      "/images/campuses/OAU/file-2-2.webp",
+      "/images/campuses/OAU/file-2-3.webp",
+      "/images/campuses/OAU/file-2-4.webp",
+      "/images/campuses/OAU/file-2-5.webp",
+      "/images/campuses/OAU/file-2.webp",
+      "/images/campuses/OAU/file-3-2.webp",
+      "/images/campuses/OAU/file-3-3.webp",
+      "/images/campuses/OAU/file-3-4.webp",
+      "/images/campuses/OAU/file-3-5.webp",
+      "/images/campuses/OAU/file-3.webp",
+      "/images/campuses/OAU/file-4-2.webp",
+      "/images/campuses/OAU/file-4-3.webp",
+      "/images/campuses/OAU/file-4-4.webp",
+      "/images/campuses/OAU/file-4.webp",
+      "/images/campuses/OAU/file-5-2.webp",
+      "/images/campuses/OAU/file-5-3.webp",
+      "/images/campuses/OAU/file-5-4.webp",
+      "/images/campuses/OAU/file-5.webp",
+      "/images/campuses/OAU/file-6-2.webp",
+      "/images/campuses/OAU/file-6-3.webp",
+      "/images/campuses/OAU/file-6.webp",
+      "/images/campuses/OAU/file-7-2.webp",
+      "/images/campuses/OAU/file-7.webp",
+      "/images/campuses/OAU/file-8.webp"
+    ],
+    "upcomingEventImg": "/images/campuses/OAU/file-8.webp"
   },
-  { 
-    id: 'unn', 
-    name: 'MFMCF UNN', 
-    university: 'University of Nigeria, Nsukka', 
-    location: 'Nsukka, Enugu', 
-    zone: 'South-East', 
-    img: 'https://images.unsplash.com/photo-1525926477800-7a3b10316ac6?auto=format&fit=crop&w=800&q=80',
-    stats: { members: '900+', subgroups: 6, founded: 2001 },
-    schedule: [
-      { day: 'Sunday', time: '8:00 AM', event: 'Sunday Service', loc: 'Ekpo Ref' },
-      { day: 'Wednesday', time: '5:00 PM', event: 'Midweek Fire', loc: 'Sub Hall' }
-    ]
+  {
+    "id": "unn",
+    "name": "MFMCF UNN",
+    "university": "University of Nigeria, Nsukka",
+    "location": "Nsukka, Enugu",
+    "zone": "South-East",
+    "slogan": "Raising Lions for the Kingdom",
+    "stats": {
+      "members": "900+",
+      "subgroups": 6,
+      "founded": 2001
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "8:00 AM",
+        "event": "Sunday Service",
+        "loc": "Ekpo Ref",
+        "img": "/images/campuses/UNN/file-1-3.jpg"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM",
+        "event": "Midweek Fire",
+        "loc": "Sub Hall",
+        "img": "/images/campuses/UNN/file-1.jpg"
+      }
+    ],
+    "img": "/images/campuses/UNN/file-1-2.jpg",
+    "gallery": [
+      "/images/campuses/UNN/file-1-3.jpg",
+      "/images/campuses/UNN/file-1.jpg",
+      "/images/campuses/UNN/file-10-2.jpg",
+      "/images/campuses/UNN/file-10-3.jpg",
+      "/images/campuses/UNN/file-10.jpg",
+      "/images/campuses/UNN/file-2-2.jpg",
+      "/images/campuses/UNN/file-2-3.jpg",
+      "/images/campuses/UNN/file-2.jpg",
+      "/images/campuses/UNN/file-3-2.jpg",
+      "/images/campuses/UNN/file-3-3.jpg",
+      "/images/campuses/UNN/file-3.jpg",
+      "/images/campuses/UNN/file-4-2.jpg",
+      "/images/campuses/UNN/file-4-3.jpg",
+      "/images/campuses/UNN/file-4.jpg",
+      "/images/campuses/UNN/file-5-2.jpg",
+      "/images/campuses/UNN/file-5-3.jpg",
+      "/images/campuses/UNN/file-5.jpg",
+      "/images/campuses/UNN/file-6-2.jpg",
+      "/images/campuses/UNN/file-6-3.jpg",
+      "/images/campuses/UNN/file-6.jpg",
+      "/images/campuses/UNN/file-7-2.jpg",
+      "/images/campuses/UNN/file-7-3.jpg",
+      "/images/campuses/UNN/file-7.jpg",
+      "/images/campuses/UNN/file-8-2.jpg",
+      "/images/campuses/UNN/file-8-3.jpg",
+      "/images/campuses/UNN/file-8.jpg",
+      "/images/campuses/UNN/file-9-2.jpg",
+      "/images/campuses/UNN/file-9-3.jpg",
+      "/images/campuses/UNN/file-9.jpg"
+    ],
+    "upcomingEventImg": "/images/campuses/UNN/file-9.jpg"
   },
-  { 
-    id: 'abu', 
-    name: 'MFMCF ABU', 
-    university: 'Ahmadu Bello University', 
-    location: 'Zaria, Kaduna', 
-    zone: 'North-West', 
-    img: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80',
-    stats: { members: '600+', subgroups: 5, founded: 2005 },
-    schedule: [
-      { day: 'Sunday', time: '9:00 AM', event: 'Worship Service', loc: 'Amina Hall Arena' },
-      { day: 'Friday', time: '5:00 PM', event: 'Power Must Change Hands', loc: 'Chapel' }
-    ]
+  {
+    "id": "unilorin",
+    "name": "MFMCF UNILORIN",
+    "university": "University of Ilorin",
+    "location": "Ilorin, Kwara",
+    "zone": "North-Central",
+    "slogan": "Better by Far, Greater by Fire",
+    "stats": {
+      "members": "1,500+",
+      "subgroups": 10,
+      "founded": 2000
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "7:00 AM",
+        "event": "Sunday Glory",
+        "loc": "Multi-Purpose Hall",
+        "img": "/images/campuses/UNILORIN/file-1-3.jpg"
+      },
+      {
+        "day": "Tuesday",
+        "time": "6:00 PM",
+        "event": "Bible Study",
+        "loc": "Block 4",
+        "img": "/images/campuses/UNILORIN/file-1-4.jpg"
+      }
+    ],
+    "img": "/images/campuses/UNILORIN/file-1-2.jpg",
+    "gallery": [
+      "/images/campuses/UNILORIN/file-1-3.jpg",
+      "/images/campuses/UNILORIN/file-1-4.jpg",
+      "/images/campuses/UNILORIN/file-1.jpg",
+      "/images/campuses/UNILORIN/file-10-2.jpg",
+      "/images/campuses/UNILORIN/file-10-3.jpg",
+      "/images/campuses/UNILORIN/file-10.jpg",
+      "/images/campuses/UNILORIN/file-11-2.jpg",
+      "/images/campuses/UNILORIN/file-11-3.jpg",
+      "/images/campuses/UNILORIN/file-11.jpg",
+      "/images/campuses/UNILORIN/file-12-2.jpg",
+      "/images/campuses/UNILORIN/file-12-3.jpg",
+      "/images/campuses/UNILORIN/file-12.jpg",
+      "/images/campuses/UNILORIN/file-13-2.jpg",
+      "/images/campuses/UNILORIN/file-13-3.jpg",
+      "/images/campuses/UNILORIN/file-13.jpg",
+      "/images/campuses/UNILORIN/file-14-2.jpg",
+      "/images/campuses/UNILORIN/file-14-3.jpg",
+      "/images/campuses/UNILORIN/file-14.jpg",
+      "/images/campuses/UNILORIN/file-15-2.jpg",
+      "/images/campuses/UNILORIN/file-15.jpg",
+      "/images/campuses/UNILORIN/file-16-2.jpg",
+      "/images/campuses/UNILORIN/file-16.jpg",
+      "/images/campuses/UNILORIN/file-17-2.jpg",
+      "/images/campuses/UNILORIN/file-17.jpg",
+      "/images/campuses/UNILORIN/file-18.jpg",
+      "/images/campuses/UNILORIN/file-19.jpg",
+      "/images/campuses/UNILORIN/file-2-2.jpg",
+      "/images/campuses/UNILORIN/file-2-3.jpg",
+      "/images/campuses/UNILORIN/file-2-4.jpg",
+      "/images/campuses/UNILORIN/file-2.jpg",
+      "/images/campuses/UNILORIN/file-20.jpg",
+      "/images/campuses/UNILORIN/file-3-2.jpg",
+      "/images/campuses/UNILORIN/file-3-3.jpg",
+      "/images/campuses/UNILORIN/file-3-4.jpg",
+      "/images/campuses/UNILORIN/file-3.jpg",
+      "/images/campuses/UNILORIN/file-4-2.jpg",
+      "/images/campuses/UNILORIN/file-4-3.jpg",
+      "/images/campuses/UNILORIN/file-4-4.jpg",
+      "/images/campuses/UNILORIN/file-4.jpg",
+      "/images/campuses/UNILORIN/file-5-2.jpg",
+      "/images/campuses/UNILORIN/file-5-3.jpg",
+      "/images/campuses/UNILORIN/file-5.jpg",
+      "/images/campuses/UNILORIN/file-6-2.jpg",
+      "/images/campuses/UNILORIN/file-6-3.jpg",
+      "/images/campuses/UNILORIN/file-6.jpg",
+      "/images/campuses/UNILORIN/file-7-2.jpg",
+      "/images/campuses/UNILORIN/file-7-3.jpg",
+      "/images/campuses/UNILORIN/file-7.jpg",
+      "/images/campuses/UNILORIN/file-8-2.jpg",
+      "/images/campuses/UNILORIN/file-8-3.jpg",
+      "/images/campuses/UNILORIN/file-8.jpg",
+      "/images/campuses/UNILORIN/file-9-2.jpg",
+      "/images/campuses/UNILORIN/file-9-3.jpg",
+      "/images/campuses/UNILORIN/file-9.jpg"
+    ],
+    "upcomingEventImg": "/images/campuses/UNILORIN/file-9.jpg"
   },
-  { 
-    id: 'unilorin', 
-    name: 'MFMCF UNILORIN', 
-    university: 'University of Ilorin', 
-    location: 'Ilorin, Kwara', 
-    zone: 'North-Central', 
-    img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
-    stats: { members: '1,500+', subgroups: 10, founded: 2000 },
-    schedule: [
-      { day: 'Sunday', time: '7:00 AM', event: 'Sunday Glory', loc: 'Multi-Purpose Hall' },
-      { day: 'Tuesday', time: '6:00 PM', event: 'Bible Study', loc: 'Block 4' }
-    ]
+  {
+    "id": "unical",
+    "name": "MFMCF UNICAL",
+    "university": "University of Calabar",
+    "location": "Calabar, Cross River",
+    "zone": "South-South",
+    "slogan": "Malabo on Fire",
+    "stats": {
+      "members": "1,100+",
+      "subgroups": 7,
+      "founded": 1999
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "8:30 AM",
+        "event": "Divine Encounter",
+        "loc": "Malabo Hall",
+        "img": "/images/campuses/UNICAL/file-1-3.jpg"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:00 PM",
+        "event": "Prayer Meeting",
+        "loc": "Pavilion",
+        "img": "/images/campuses/UNICAL/file-1.jpg"
+      }
+    ],
+    "img": "/images/campuses/UNICAL/file-1-2.jpg",
+    "gallery": [
+      "/images/campuses/UNICAL/file-1-3.jpg",
+      "/images/campuses/UNICAL/file-1.jpg",
+      "/images/campuses/UNICAL/file-10.jpg",
+      "/images/campuses/UNICAL/file-2-2.jpg",
+      "/images/campuses/UNICAL/file-2-3.jpg",
+      "/images/campuses/UNICAL/file-2.jpg",
+      "/images/campuses/UNICAL/file-3-2.jpg",
+      "/images/campuses/UNICAL/file-3-3.jpg",
+      "/images/campuses/UNICAL/file-3.jpg",
+      "/images/campuses/UNICAL/file-4-2.jpg",
+      "/images/campuses/UNICAL/file-4-3.jpg",
+      "/images/campuses/UNICAL/file-4.jpg",
+      "/images/campuses/UNICAL/file-5-2.jpg",
+      "/images/campuses/UNICAL/file-5-3.jpg",
+      "/images/campuses/UNICAL/file-5.jpg",
+      "/images/campuses/UNICAL/file-6-2.jpg",
+      "/images/campuses/UNICAL/file-6-3.jpg",
+      "/images/campuses/UNICAL/file-6.jpg",
+      "/images/campuses/UNICAL/file-7-2.jpg",
+      "/images/campuses/UNICAL/file-7-3.jpg",
+      "/images/campuses/UNICAL/file-7.jpg",
+      "/images/campuses/UNICAL/file-8-2.jpg",
+      "/images/campuses/UNICAL/file-8.jpg",
+      "/images/campuses/UNICAL/file-9.jpg"
+    ],
+    "upcomingEventImg": "/images/campuses/UNICAL/file-9.jpg"
   },
-  { 
-    id: 'unical', 
-    name: 'MFMCF UNICAL', 
-    university: 'University of Calabar', 
-    location: 'Calabar, Cross River', 
-    zone: 'South-South', 
-    img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
-    stats: { members: '1,100+', subgroups: 7, founded: 1999 },
-    schedule: [
-      { day: 'Sunday', time: '8:30 AM', event: 'Divine Encounter', loc: 'Malabo Hall' },
-      { day: 'Thursday', time: '5:00 PM', event: 'Prayer Meeting', loc: 'Pavilion' }
-    ]
+  {
+    "id": "uniben",
+    "name": "MFMCF UNIBEN",
+    "university": "University of Benin",
+    "location": "Benin, Edo",
+    "zone": "South-South",
+    "slogan": "Unibest in the Spirit",
+    "stats": {
+      "members": "1,400+",
+      "subgroups": 9,
+      "founded": 1997
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "8:00 AM",
+        "event": "Glory Service",
+        "loc": "Main Chapel",
+        "img": "/images/campuses/UNIBEN/file-1-3.webp"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:30 PM",
+        "event": "Word Diet",
+        "loc": "Lecture Theatre",
+        "img": "/images/campuses/UNIBEN/file-1.webp"
+      }
+    ],
+    "img": "/images/campuses/UNIBEN/file-1-2.webp",
+    "gallery": [
+      "/images/campuses/UNIBEN/file-1-3.webp",
+      "/images/campuses/UNIBEN/file-1.webp",
+      "/images/campuses/UNIBEN/file-10-2.webp",
+      "/images/campuses/UNIBEN/file-10-3.webp",
+      "/images/campuses/UNIBEN/file-10.webp",
+      "/images/campuses/UNIBEN/file-11-2.webp",
+      "/images/campuses/UNIBEN/file-11-3.webp",
+      "/images/campuses/UNIBEN/file-11.webp",
+      "/images/campuses/UNIBEN/file-12-2.webp",
+      "/images/campuses/UNIBEN/file-12-3.webp",
+      "/images/campuses/UNIBEN/file-12.webp",
+      "/images/campuses/UNIBEN/file-13.webp",
+      "/images/campuses/UNIBEN/file-14.webp",
+      "/images/campuses/UNIBEN/file-15.webp",
+      "/images/campuses/UNIBEN/file-16.webp",
+      "/images/campuses/UNIBEN/file-17.webp",
+      "/images/campuses/UNIBEN/file-18.webp",
+      "/images/campuses/UNIBEN/file-19.webp",
+      "/images/campuses/UNIBEN/file-2-2.webp",
+      "/images/campuses/UNIBEN/file-2-3.webp",
+      "/images/campuses/UNIBEN/file-2.webp",
+      "/images/campuses/UNIBEN/file-20.webp",
+      "/images/campuses/UNIBEN/file-3-2.webp",
+      "/images/campuses/UNIBEN/file-3-3.webp",
+      "/images/campuses/UNIBEN/file-3.webp",
+      "/images/campuses/UNIBEN/file-4-2.webp",
+      "/images/campuses/UNIBEN/file-4-3.webp",
+      "/images/campuses/UNIBEN/file-4.webp",
+      "/images/campuses/UNIBEN/file-5-2.webp",
+      "/images/campuses/UNIBEN/file-5-3.webp",
+      "/images/campuses/UNIBEN/file-5.webp",
+      "/images/campuses/UNIBEN/file-6-2.webp",
+      "/images/campuses/UNIBEN/file-6-3.webp",
+      "/images/campuses/UNIBEN/file-6.webp",
+      "/images/campuses/UNIBEN/file-7-2.webp",
+      "/images/campuses/UNIBEN/file-7-3.webp",
+      "/images/campuses/UNIBEN/file-7.webp",
+      "/images/campuses/UNIBEN/file-8-2.webp",
+      "/images/campuses/UNIBEN/file-8-3.webp",
+      "/images/campuses/UNIBEN/file-8.webp",
+      "/images/campuses/UNIBEN/file-9-2.webp",
+      "/images/campuses/UNIBEN/file-9-3.webp",
+      "/images/campuses/UNIBEN/file-9.webp"
+    ],
+    "upcomingEventImg": "/images/campuses/UNIBEN/file-9.webp"
   },
+  {
+    "id": "lasu",
+    "name": "MFMCF LASU",
+    "university": "Lagos State University",
+    "location": "Ojo, Lagos",
+    "zone": "South-West",
+    "slogan": "Radiating His Glory on Campus",
+    "stats": {
+      "members": "800+",
+      "subgroups": 5,
+      "founded": 2002
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "8:00 AM",
+        "event": "Worship Encounter",
+        "loc": "Faculty of Arts",
+        "img": "/images/campuses/LASU/file-1-3.webp"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:00 PM",
+        "event": "Prayer Rain",
+        "loc": "Pavilion",
+        "img": "/images/campuses/LASU/file-1.webp"
+      }
+    ],
+    "img": "/images/campuses/LASU/file-1-2.webp",
+    "gallery": [
+      "/images/campuses/LASU/file-1-3.webp",
+      "/images/campuses/LASU/file-1.webp",
+      "/images/campuses/LASU/file-10.webp",
+      "/images/campuses/LASU/file-11.webp",
+      "/images/campuses/LASU/file-2-2.webp",
+      "/images/campuses/LASU/file-2-3.webp",
+      "/images/campuses/LASU/file-2.webp",
+      "/images/campuses/LASU/file-3-2.webp",
+      "/images/campuses/LASU/file-3-3.webp",
+      "/images/campuses/LASU/file-3.webp",
+      "/images/campuses/LASU/file-4-2.webp",
+      "/images/campuses/LASU/file-4-3.webp",
+      "/images/campuses/LASU/file-4.webp",
+      "/images/campuses/LASU/file-5-2.webp",
+      "/images/campuses/LASU/file-5-3.webp",
+      "/images/campuses/LASU/file-5.webp",
+      "/images/campuses/LASU/file-6-2.webp",
+      "/images/campuses/LASU/file-6-3.webp",
+      "/images/campuses/LASU/file-6.webp",
+      "/images/campuses/LASU/file-7-2.webp",
+      "/images/campuses/LASU/file-7-3.webp",
+      "/images/campuses/LASU/file-7.webp",
+      "/images/campuses/LASU/file-8-2.webp",
+      "/images/campuses/LASU/file-8-3.webp",
+      "/images/campuses/LASU/file-8.webp",
+      "/images/campuses/LASU/file-9-2.webp",
+      "/images/campuses/LASU/file-9.webp"
+    ],
+    "upcomingEventImg": "/images/campuses/LASU/file-9.webp"
+  },
+  {
+    "id": "funaab",
+    "name": "MFMCF FUNAAB",
+    "university": "Federal University of Agriculture",
+    "location": "Abeokuta, Ogun",
+    "zone": "South-West",
+    "slogan": "Sowing the Seed of the Word",
+    "stats": {
+      "members": "950+",
+      "subgroups": 6,
+      "founded": 2000
+    },
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "7:30 AM",
+        "event": "Worship Service",
+        "loc": "MPR",
+        "img": "/images/campuses/FUNAAB/file-1.webp"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM",
+        "event": "Bible Study",
+        "loc": "Auditorium",
+        "img": "/images/campuses/FUNAAB/file-10-2.webp"
+      }
+    ],
+    "img": "/images/campuses/FUNAAB/file-1-2.webp",
+    "gallery": [
+      "/images/campuses/FUNAAB/file-1.webp",
+      "/images/campuses/FUNAAB/file-10-2.webp",
+      "/images/campuses/FUNAAB/file-10.webp",
+      "/images/campuses/FUNAAB/file-11-2.webp",
+      "/images/campuses/FUNAAB/file-11.webp",
+      "/images/campuses/FUNAAB/file-12-2.webp",
+      "/images/campuses/FUNAAB/file-12.webp",
+      "/images/campuses/FUNAAB/file-13-2.webp",
+      "/images/campuses/FUNAAB/file-13.webp",
+      "/images/campuses/FUNAAB/file-14-2.webp",
+      "/images/campuses/FUNAAB/file-14.webp",
+      "/images/campuses/FUNAAB/file-15-2.webp",
+      "/images/campuses/FUNAAB/file-15.webp",
+      "/images/campuses/FUNAAB/file-16-2.webp",
+      "/images/campuses/FUNAAB/file-16.webp",
+      "/images/campuses/FUNAAB/file-17-2.webp",
+      "/images/campuses/FUNAAB/file-17.webp",
+      "/images/campuses/FUNAAB/file-18-2.webp",
+      "/images/campuses/FUNAAB/file-18.webp",
+      "/images/campuses/FUNAAB/file-19.webp",
+      "/images/campuses/FUNAAB/file-2-2.webp",
+      "/images/campuses/FUNAAB/file-2.webp",
+      "/images/campuses/FUNAAB/file-20.webp",
+      "/images/campuses/FUNAAB/file-3-2.webp",
+      "/images/campuses/FUNAAB/file-3.webp",
+      "/images/campuses/FUNAAB/file-4-2.webp",
+      "/images/campuses/FUNAAB/file-4.webp",
+      "/images/campuses/FUNAAB/file-5-2.webp",
+      "/images/campuses/FUNAAB/file-5.webp",
+      "/images/campuses/FUNAAB/file-6-2.webp",
+      "/images/campuses/FUNAAB/file-6.webp",
+      "/images/campuses/FUNAAB/file-7-2.webp",
+      "/images/campuses/FUNAAB/file-7.webp",
+      "/images/campuses/FUNAAB/file-8-2.webp",
+      "/images/campuses/FUNAAB/file-8.webp",
+      "/images/campuses/FUNAAB/file-9-2.webp",
+      "/images/campuses/FUNAAB/file-9.webp"
+    ],
+    "upcomingEventImg": "/images/campuses/FUNAAB/file-9.webp"
+  }
 ];

@@ -8,9 +8,34 @@
   }
   body {
     font-family: 'Instrument Sans', sans-serif;
-    background: #f9f5ef;
+    background: #fcfaf7;
     color: #18131d;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  html.dark body {
+    background: #150c1f;
+    color: #f9f5ef;
+  }
+  html.dark .soft-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  html.dark .fi {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  html.dark .fi:focus {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  html.dark .fi::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  html.dark .gold-pill {
+    background: rgba(215, 168, 74, 0.1);
+    color: #d7a84a;
+    border: 1px solid rgba(215, 168, 74, 0.2);
   }
 }
 
@@ -26,6 +51,9 @@
   .soft-card:hover {
     box-shadow: 0 12px 48px rgba(45,16,66,.09);
     transform: translateY(-2px);
+  }
+  html.dark .soft-card:hover {
+    box-shadow: 0 12px 48px rgba(0,0,0,.3);
   }
 
   /* Custom inputs */
@@ -96,6 +124,6 @@
   }
 
   .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 60s linear infinite;
   }
 }

@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Flame } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -14,13 +14,13 @@ export default function Footer() {
           
           {/* Col 1: Brand */}
           <div className="lg:col-span-2 pr-8">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-mfm-gold flex items-center justify-center text-mfm-purple-dark shrink-0">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c-2.28 0-3-4.5-3-4.5s-2 3-2 4.5a2.5 2.5 0 002.5 2.5z"></path><path d="M15.5 11.5c0-3-2-5-2-5s-1.5 1.5-1.5 3.5c0 2 2 3.5 2 3.5s1.5-1 1.5-2z"></path><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path></svg>
+            <Link to="/" className="flex items-center gap-3 mb-6 group">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img src="/src/assets/logo.webp" alt="MFMCAMPUSHQ Logo" className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
               </div>
               <div>
-                <span className="font-display font-bold text-xl tracking-tight text-[#f3eedd] leading-none block">MFMCAMPUSHQ</span>
-                <span className="text-[10px] font-mono text-white/50 tracking-[0.2em] uppercase block">MFM CAMPUS FELLOWSHIP NIGERIA</span>
+                <span className="font-display font-bold text-xl tracking-tight text-[#f3eedd] leading-none block group-hover:text-mfm-gold transition-colors">MFMCAMPUSHQ</span>
+                <span className="text-[10px] font-mono text-white/50 tracking-[0.2em] uppercase block -mt-[1px]">NATIONAL CAMPUS FELLOWSHIP</span>
               </div>
             </Link>
             <p className="text-white/60 leading-relaxed mb-8 max-w-sm">
@@ -47,14 +47,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: National */}
+          {/* Col 3: Quick Links */}
           <div>
-            <h4 className="text-[#f3eedd] font-bold mb-6">National</h4>
+            <h4 className="text-[#f3eedd] font-bold mb-6">Quick Links</h4>
             <ul className="space-y-4">
-              <li><button onClick={() => scrollTo('events')} className="text-white/60 hover:text-white transition-colors">Events</button></li>
-              <li><button onClick={() => scrollTo('prayer')} className="text-white/60 hover:text-white transition-colors">Prayer Altar</button></li>
-              <li><button onClick={() => scrollTo('resources')} className="text-white/60 hover:text-white transition-colors">Sermons</button></li>
-              <li><a href="https://mountainoffire.org" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">MFM Global</a></li>
+              <li><a href="https://www.mountainoffire.org/resources/prayer-points" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">Downloads</a></li>
+              <li><a href="https://mountainoffire.org/pmch" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">PMCH</a></li>
+              <li><a href="https://dkoebooks.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">D. K. O E-Books</a></li>
+              <li><a href="https://dkofoundation.org" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">D. K. O Foundation M.T.U</a></li>
+              <li><a href="https://mountainoffire.org/ebooks" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">MFM E-books</a></li>
             </ul>
           </div>
 
@@ -63,8 +64,8 @@ export default function Footer() {
             <h4 className="text-[#f3eedd] font-bold mb-6">Contact</h4>
             <ul className="space-y-4">
               <li className="text-white/60">MFMCAMPUSHQ National Secretariat<br/>Lagos, Nigeria</li>
-              <li><a href="mailto:campushq@mfmworldwide.org" className="text-white/60 hover:text-white transition-colors">campushq@mfmworldwide.org</a></li>
-              <li className="text-white/60">+234 800 MFM CFHQ</li>
+              <li><a href="mailto:mfmnationalcf@yahoo.com" className="text-white/60 hover:text-white transition-colors">mfmnationalcf@yahoo.com</a></li>
+              <li><a href="tel:08062704913" className="text-white/60 hover:text-white transition-colors">0806 270 4913</a></li>
               <li><button onClick={() => scrollTo('campuses')} className="text-mfm-gold font-bold hover:text-[#d8a43f] transition-colors mt-2">Join this week &rarr;</button></li>
             </ul>
           </div>

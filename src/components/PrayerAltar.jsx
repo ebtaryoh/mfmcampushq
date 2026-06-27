@@ -3,17 +3,17 @@ import { FadeUp } from './animations';
 
 export default function PrayerAltar() {
   return (
-    <section id="prayer" className="py-24 bg-[#f9f5ef]">
+    <section id="prayer" className="py-24 bg-[#f9f5ef] dark:bg-[#1a0f26] transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-8">
           
           {/* Left Side: Connection Form */}
           <FadeUp>
-            <div className="bg-white rounded-[40px] p-10 md:p-14 shadow-sm border border-mfm-stone/10 h-full">
-              <h2 className="font-display text-4xl md:text-5xl text-mfm-purple-dark mb-6 leading-tight">
+            <div className="bg-white dark:bg-white/5 rounded-[40px] p-10 md:p-14 shadow-sm border border-mfm-stone/10 dark:border-white/10 h-full backdrop-blur-sm">
+              <h2 className="font-display text-4xl md:text-5xl text-mfm-purple-dark dark:text-mfm-cream mb-6 leading-tight">
                 New to MFMCF?<br/>We'll connect you<br/>this week.
               </h2>
-              <p className="text-mfm-stone mb-10 text-lg leading-relaxed">
+              <p className="text-mfm-stone dark:text-mfm-stone/80 mb-10 text-lg leading-relaxed">
                 Fill this quick form. Your campus coordinator will reach you on WhatsApp in under 12 hours. Seriously.
               </p>
               

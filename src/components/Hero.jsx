@@ -1,7 +1,21 @@
+import { useState, useEffect } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FadeUp, StaggeredText } from './animations';
+import { CAMPUSES } from '../data/campuses';
 
 export default function Hero({ openModal }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const carouselImages = CAMPUSES.map(c => c.img).filter(Boolean);
+
+  useEffect(() => {
+    if (carouselImages.length === 0) return;
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 8000); // Change image every 8 seconds
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+
   const scrollToCampus = () => {
     const el = document.getElementById('campuses');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -9,16 +23,27 @@ export default function Hero({ openModal }) {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden px-6 pt-40 pb-32">
-      {/* Cinematic Background */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=2500&q=80" 
-          alt="Students worshipping" 
-          className="w-full h-full object-cover"
-        />
+      {/* Cinematic Background Carousel */}
+      <div className="absolute inset-0 z-0 bg-[#2a0e20]">
+        <AnimatePresence mode="wait">
+          {carouselImages.map((img, index) =>
+            index === currentImageIndex ? (
+              <motion.img
+                key={index}
+                src={img}
+                alt={`Campus highlight ${index + 1}`}
+                initial={{ opacity: 0, scale: 1.08 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : null
+          )}
+        </AnimatePresence>
         <div className="absolute inset-0 bg-[#2a0e20]/70 mix-blend-multiply"></div>
         {/* Deep gradient to blend into the next section */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2a0e20]/40 via-[#2a0e20]/80 to-[#fcfaf7]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#2a0e20]/40 via-[#2a0e20]/80 to-[#fcfaf7] dark:to-[#150c1f]"></div>
         {/* Premium glowing orb in the center */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] lg:w-[1000px] lg:h-[1000px] bg-mfm-purple/40 blur-[160px] rounded-full z-10 pointer-events-none mix-blend-screen"></div>
       </div>

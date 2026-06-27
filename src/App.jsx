@@ -7,6 +7,7 @@ import ModalManager from './components/modals/ModalManager';
 import Home from './pages/Home';
 import CampusPage from './pages/CampusPage';
 import EventsPage from './pages/EventsPage';
+import GOAwardPage from './pages/GOAwardPage';
 import Preloader from './components/Preloader';
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
 
-      <div className="bg-mfm-cream text-mfm-ink min-h-screen font-sans antialiased selection:bg-mfm-purple selection:text-white">
+      <div className="bg-mfm-cream dark:bg-mfm-purple-dark text-mfm-ink dark:text-mfm-cream min-h-screen font-sans antialiased selection:bg-mfm-purple selection:text-white transition-colors duration-500">
         <Navbar openModal={openModal} />
         
         <AnimatePresence mode="wait">
@@ -46,6 +47,7 @@ function App() {
             <Route path="/" element={<Home openModal={openModal} />} />
             <Route path="/campus/:id" element={<CampusPage openModal={openModal} />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/go-award" element={<GOAwardPage />} />
           </Routes>
         </AnimatePresence>
 
