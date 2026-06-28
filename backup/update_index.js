@@ -96,7 +96,7 @@ const missingModals = `
             <button class="w-12 h-12 rounded-full bg-[#d7a84a] text-[#2d1042] flex items-center justify-center flex-shrink-0"><i data-lucide="play" class="w-5 h-5 ml-1"></i></button>
             <div class="flex-1">
               <div class="font-[700] text-[16px] text-white">The Power of Campus Revival</div>
-              <div class="text-[13px] text-[#a787b3]">Pastor Gbenga • 45 mins</div>
+              <div class="text-[13px] text-[#a787b3]">Pastor Gbenga Adegboye • 45 mins</div>
             </div>
           </div>
           <div class="bg-white/5 border border-white/10 p-4 rounded-[16px] flex items-center gap-4 hover:bg-white/10 transition cursor-pointer" onclick="playSermon(this)">

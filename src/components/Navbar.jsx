@@ -33,9 +33,7 @@ export default function Navbar({ openModal }) {
     setMobileMenuOpen(false);
   };
 
-  const navLinks = [
-    { name: 'Prayer Altar', id: 'prayer' },
-  ];
+  const navLinks = [];
 
   // Group campuses by zone
   const zones = [...new Set(CAMPUSES.map(c => c.zone))];
@@ -97,8 +95,8 @@ export default function Navbar({ openModal }) {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-mfm-stone/10 transition-colors text-mfm-ink dark:text-mfm-cream">
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            <button onClick={toggleTheme} className="flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-mfm-stone/10 transition-colors text-mfm-ink dark:text-mfm-cream text-[13px] font-medium">
+              {theme === 'dark' ? <><Sun size={16} /><span>Light</span></> : <><Moon size={16} /><span>Dark</span></>}
             </button>
             
             {/* Mega Menu Toggle */}
@@ -158,8 +156,8 @@ export default function Navbar({ openModal }) {
           </div>
 
           <div className="lg:hidden flex items-center gap-4">
-            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-mfm-stone/10 transition-colors text-mfm-ink dark:text-mfm-cream">
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <button onClick={toggleTheme} className="flex items-center gap-1 px-2.5 py-1.5 rounded-full hover:bg-mfm-stone/10 transition-colors text-mfm-ink dark:text-mfm-cream text-[12px] font-medium">
+              {theme === 'dark' ? <><Sun size={16} /><span>Light</span></> : <><Moon size={16} /><span>Dark</span></>}
             </button>
             <button className="text-mfm-ink dark:text-mfm-cream" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}

@@ -7,11 +7,11 @@ import Footer from '../components/Footer';
 import { PageWrapper, FadeUp, ScaleIn } from '../components/animations';
 
 const AWARD_IMAGES = [
-  '/images/go-award/img-1.jpg',
+  '/images/go-award/img-5.jpg',
   '/images/go-award/img-2.jpg',
   '/images/go-award/img-3.jpg',
   '/images/go-award/img-4.jpg',
-  '/images/go-award/img-5.jpg',
+  '/images/go-award/img-1.jpg',
   '/images/go-award/img-6.jpg',
   '/images/go-award/img-7.jpeg',
 ];
